@@ -1,0 +1,5 @@
+-Esquema de BD: revisar tipos de los campos relacionales (longitud...)
+-Esquema de BD: revisar convenio de nombres, etc.
+-Añadir capabilities
+-Crear nuevas actions para que otros plugins (y este mismo) pueda asociar triggers a eventos de kanban
+-Notificar por email cuando se asigna una tarea (wp_mail())

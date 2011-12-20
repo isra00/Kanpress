@@ -1,0 +1,189 @@
+
+/* @todo Cargar CSS elegantemente */
+@import "http://localhost/wordpress/wp-includes/js/thickbox/thickbox.css?ver=20111117";
+
+#icono-kanban {
+    /* ¿Dónde se pone la imagen? */
+    /*background: ;*/
+}
+
+.kanban-contenedor {
+    margin: 10px 0 0 0;
+    width: 99%;
+    overflow: hidden;
+    padding: 0;
+}
+
+/*
+ * KANBAN BOARD
+ */
+
+.tres-col .col {
+    width: 30%;
+    margin: 0;
+    padding: 0 1.5%;
+    float: left;
+    border-left: 1px solid silver;
+}
+.tres-col .col:first-child {
+    margin-left: 0;
+    border-left: none;
+}
+
+.col h3 {
+    text-align: center;
+}
+.area-tareas {
+    
+}
+.tarea {
+    border: 1px solid silver;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px #eee;
+    padding: 0;
+    margin: 0 0 10px;
+    overflow: hidden;
+    background: white;
+}
+.tarea .dentro {
+    padding: 0;
+    margin: 10px;
+}
+.tarea h4 {
+    margin-top: 0;
+    font-size: 1.1em;
+    padding-left: 20px;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-position: left top;
+}
+.tarea h4.low {
+    background-image: url(pr_low.png);
+}
+.tarea h4.high {
+    background-image: url(pr_high.png);
+}
+.tarea h4.medium {
+    background-image: url(pr_medium.png);
+}
+.tarea h4 img {
+    width: 16px;
+    height: 16px;
+    display: inline;
+    border: 0;
+}
+.tarea .dentro > img {
+    float: right;
+    margin: 0 0 5px 10px;
+}
+.tarea .seccion {
+    background: #eee;
+    font-weight: bold;
+    font-size: 1.1em;
+    border-radius: 10px;
+    text-transform: uppercase;
+    float: left;
+    margin: 0;
+    width: auto;
+    padding: 5px 10px;
+}
+.tarea .autor {
+    float: right;
+    margin: 0;
+    width: auto;
+    padding: 5px 10px;
+}
+
+.enlace-detalles {
+    text-decoration: none!important;
+}
+
+.creation-time {
+    text-transform: lowercase;
+}
+
+.remove-task {
+    display: none;
+    width: 100%;
+    text-align: right;
+    margin: 0 0 -16px;
+}
+.tarea:hover .remove-task {
+    display: block;
+}
+.remove-task a {
+    z-index: 999;
+    padding: 2px 3px 2px 13px;
+    border-radius: 5px;
+    background: white url(x.gif) left center no-repeat;
+    color: #C00;
+}
+
+
+/* 
+ * Pop-ups 
+ */
+
+.tarea-detalles,
+#TB_overlay,
+#TB_window,
+#form-nueva { 
+    display: none; 
+}
+
+#ventana-contenido {
+    margin: 20px;
+}
+
+
+/*
+ * FORMS
+ */
+
+.kanpress-form {
+
+}
+.kanpress-form > div {
+    overflow: hidden;
+    margin: 0 0 5px 0;
+}
+.kanpress-form label {
+    width: 200px;
+    float: left;
+    margin: 0 10px 0;
+}
+.kanpress-form > div > div {
+    float: left;
+    margin: 0;
+}
+.kanpress-form > div > div > span {
+    padding-left: 10px;
+    color: gray;
+    font-style: italic;
+    font-size: 0.9em;
+}
+.kanpress-form > div.no-valido input,
+.kanpress-form > div.no-valido textarea,
+.kanpress-form > div.no-valido select {
+    border-color: #C00;
+}
+.kanpress-form > div.no-valido label {
+    color: #C00;
+}
+.kanpress-form .val {
+    font-size: 0.9em;
+    color: #C00;
+}
+.kanpress-form textarea.regular-text {
+    width: 25em;
+}
+.kanpress-form textarea {
+    font-family: arial;
+}
+
+/*
+ * GENÉRICO
+ */
+.margen-arriba {
+    margin-top: 15px;
+}
