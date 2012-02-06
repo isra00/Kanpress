@@ -88,7 +88,7 @@ function form_select($nombre, $opciones, $seleccionada=null, $atributos=null, $p
 
 
 /**
- * Fecha y hora en formato amigable
+ * Fecha y hora en formato amigable. ¡OJO! Necesita la clase DateTime de SPL
  * 
  * @param   int     $time       La fecha original
  * @param   int     $day_limit  No se tiene en cuenta ahora
@@ -126,6 +126,45 @@ function fecha_amigable($time, $day_limit = 5)
         } else {
             return fecha_dia_mes($time);
         }
+    }
+}
+
+
+/**
+ * Formatea una fecha como "hace x tiempo". Si tiempo > 1 mes, formato español
+ * @todo Revisar esta función
+ *
+ * @param   int     $fecha_unix         La fecha en formato timestamp
+ * @return  string  Fecha formateada
+ */
+function hace_tiempo($fecha_unix) {
+    $ahora = time();
+
+    //obtener la diferencia de segundos
+    $segundos = $ahora - $fecha_unix;
+
+    //dias es la division de n segs entre 86400 segundos que representa un dia;
+    $dias = floor($segundos / 86400);
+
+    //mod_hora es el sobrante, en horas, de la division de días;
+    $mod_hora = $segundos % 86400;
+
+    //hora es la division entre el sobrante de horas y 3600 segundos que representa una hora;
+    $horas = floor($mod_hora / 3600);
+
+    //mod_minuto es el sobrante, en minutos, de la division de horas;
+    $mod_minuto = $mod_hora % 3600;
+
+    //minuto es la division entre el sobrante y 60 segundos que representa un minuto;
+    $minutos = floor($mod_minuto / 60);
+
+    if ($horas <= 0) {
+        return 'Hace ' . $minutos . " minutos";
+    } elseif ($dias <= 0) {
+        //echo $horas . " horas " . $minutos . " minutos";
+        return 'Hace ' . $horas . " horas ";
+    } else {
+        return strftime('%d de %B', $fecha_unix);
     }
 }
 
