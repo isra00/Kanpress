@@ -10,7 +10,7 @@ if (!defined('WP_PLUGIN_URL')) {
 }
 
 /**
- * @todo Change capability
+ * @todo Cambiar capability por una propia de Kanpress
  */
 if (current_user_can('edit_users')) {
     if (isset($_POST['task_id'])) {
