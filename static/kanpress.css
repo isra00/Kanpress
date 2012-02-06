@@ -137,7 +137,7 @@
 }
 .asignacion img {
     float: left;
-    margin: 0 10px 10px;
+    margin: 0 10px 0 0;
 }
 .task-description textarea {
     width: 100%!important;
