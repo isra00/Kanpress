@@ -164,7 +164,7 @@ function hace_tiempo($fecha_unix) {
         //echo $horas . " horas " . $minutos . " minutos";
         return 'Hace ' . $horas . " horas ";
     } else {
-        return strftime('%d de %B', $fecha_unix);
+        return strftime('%e de %B', $fecha_unix);
     }
 }
 
@@ -182,7 +182,7 @@ function fecha_dia_mes($timestamp=null)
         $timestamp = intval(time());
     }
 
-    $cadena = strftime('%d de %B', $timestamp);
+    $cadena = strftime('%e de %B', $timestamp);
 
     if (($anho = strftime('%Y', $timestamp)) != strftime('%Y')) {
         $cadena .= ' de ' . $anho;
