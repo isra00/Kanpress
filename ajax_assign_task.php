@@ -28,7 +28,7 @@ if (current_user_can('edit_users')) {
             $user = $user[0];
             
             $wpdb->update($wpdb->prefix . 'kanpress_task', 
-                    array('assigned_to' => $_POST['user']), 
+                    array('assigned_to' => $_POST['user'], 'time_assigned' => date('Y-m-d H:i:s')), 
                     array('task_id' => $_POST['taskId']));
 
             //Returns the assigned user avatar (including <img> tag)
