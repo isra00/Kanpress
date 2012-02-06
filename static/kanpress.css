@@ -110,23 +110,6 @@
     text-transform: lowercase;
 }
 
-.remove-task {
-    display: none;
-    width: 100%;
-    text-align: right;
-    margin: 0 0 -16px;
-}
-.tarea:hover .remove-task {
-    display: block;
-}
-.remove-task a {
-    z-index: 999;
-    padding: 2px 3px 2px 13px;
-    border-radius: 5px;
-    background: white url(x.gif) left center no-repeat;
-    color: #C00;
-}
-
 
 /* 
  * Pop-ups 
@@ -142,6 +125,34 @@
 
 #ventana-contenido {
     margin: 20px;
+}
+
+.asignacion {
+    border: 1px solid silver;
+    border-radius: 10px;
+    padding: 10px;
+    background: #eee;
+    font-weight: bold;
+    overflow: hidden;
+}
+.asignacion img {
+    float: left;
+    margin: 0 10px 10px;
+}
+.task-description textarea {
+    width: 100%!important;
+}
+.task-history {
+    font-family: georgia;
+    font-style: italic;
+}
+.task-history span {
+    font-family: arial;
+    font-style: normal;
+    font-size: 1em;
+}
+.remove-task-link {
+    color: red!important;
 }
 
 
@@ -195,4 +206,14 @@
  */
 .margen-arriba {
     margin-top: 15px;
+}
+.centro {
+    text-align: center;
+}
+.light {
+    font-weight: normal;
+}
+hr {
+    border: none;
+    border-top: 1px solid silver;
 }
