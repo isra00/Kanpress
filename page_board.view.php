@@ -7,10 +7,14 @@
                 <a href="javascript:void(0)" class="remove-task-link" id="remove-<?php echo $task['task_id'] ?>">Eliminar</a>
             </div>
         
+            <div class="img">
             <?php if (intval($task['assigned_to']) > 0) : ?>
-            <!--<img src="http://localhost/wordpress/wp-content/plugins/kanpress/static/isra.jpg" width="50" height="50" class="assigned-to" />-->
-            <?php echo get_avatar($task['assigned_to'], 50, null, $task['user_assigned']) ?>
+                <!--<img src="http://localhost/wordpress/wp-content/plugins/kanpress/static/isra.jpg" width="50" height="50" class="assigned-to" />-->
+                <?php echo get_avatar($task['assigned_to'], 50, null, $task['user_assigned']) ?>
+            <?php else : ?>
+                No asignada
             <?php endif ?>
+            </div>
             
             <?php $prioridades = array("baja", "normal", "alta") ?>
             <h4 class="<?php echo $priorities[$task['priority']] ?>" title="Prioridad <?php echo $prioridades[$task['priority']] ?>">
@@ -28,12 +32,15 @@
                 <?php endif ?>
             </p>
         </div>
-        <div class="seccion">
-            <?php echo $task['name'] ?>
-        </div>
-        <div class="meta">
-            <span class="creation-time"><?php echo hace_tiempo(strtotime($task['time_proposed'])) ?></span>
-            <a href="javascript_void(0)" class="detalles" id="detalles-<?php echo $task['task_id'] ?>">Detalles</a>
+        
+        <div class="pie">
+            <div class="seccion">
+                <?php echo $task['name'] ?>
+            </div>
+            <div class="meta">
+                <span class="creation-time"><?php echo hace_tiempo(strtotime($task['time_proposed'])) ?></span>
+                <a href="javascript_void(0)" class="detalles" id="detalles-<?php echo $task['task_id'] ?>">Detalles</a>
+            </div>
         </div>
     </div>
 <?php } ?>
@@ -110,8 +117,8 @@ jQuery(function() {
             taskId = $(this).attr("id").substr(7);
             
             /* 
-             * For faster response, we remove the task from the HTML before we get the 
-             * confirmation from the server
+             * For faster response, we remove the task from the HTML before we 
+             * get the confirmation from the server
              */
             
             //if (parseInt(response) == 1) {
@@ -151,7 +158,6 @@ jQuery(function() {
             
             //Get the task id
             taskId = parseInt(task.attr("id").substr(6));
-            
             
             //When dropping to col2 (develop), user have to assign the task
             if ($(this).parent().attr("id") == "col2") {

@@ -1,5 +1,4 @@
-
-/* @todo Cargar CSS elegantemente */
+/* @todo #10 Cargar CSS elegantemente */
 @import "http://localhost/wordpress/wp-includes/js/thickbox/thickbox.css?ver=20111117";
 
 #icono-kanpress {
@@ -44,10 +43,6 @@
     overflow: hidden;
     background: white;
 }
-.tarea .dentro {
-    padding: 0;
-    margin: 10px;
-}
 .tarea h4 {
     margin-top: 0;
     font-size: 1.1em;
@@ -71,9 +66,22 @@
     display: inline;
     border: 0;
 }
-.tarea .dentro > img {
+.tarea .dentro {
+    padding: 0;
+    margin: 10px;
+    overflow: hidden;
+}
+.tarea .dentro > .img {
     float: right;
     margin: 0 0 5px 10px;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    background: #eee;
+    font-size: 10px;
+}
+.tarea .pie {
+    overflow: hidden;
 }
 .tarea .seccion {
     background: #eee;
