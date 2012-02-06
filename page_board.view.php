@@ -180,10 +180,11 @@ jQuery(function() {
         $("#btn-asignar").click(function() {
 
             taskId = $("#taskId").val();
+            userId = $("#user").val();
 
             postData = {
                 'taskId': taskId,
-                'user': $("#user").val()
+                'user': userId
             };
             
             $("#TB_overlay").hide('fast');
@@ -196,6 +197,12 @@ jQuery(function() {
                 data: postData,
                 success: function(response) {
                     $("#tarea-" + taskId + " .asignar").html(response);
+                    
+                    //Update the details pop-up ("assigned to...")
+                    $("#tarea-" + taskId + " .asignacion").html(
+                        response + '<span class="light">Asignada a</span>'
+                        + '<br />' + $("#user option[value=" + userId + "]").html()
+                    );
                 },
                 error: function() {
                     
@@ -238,17 +245,6 @@ jQuery(function() {
             
             //Get the task id
             taskId = parseInt(task.attr("id").substr(6));
-            
-            //When dropping to col2 (develop), user have to assign the task
-            /*if ($(this).parent().attr("id") == "col2") {
-            
-                //If the task has an image, it's assigned, so we don't ask
-                if ($(".ui-draggable-dragging .avatar").length == 0) {
-                
-                    
-                    doAjax = false;
-                }
-            }*/
             
             //Change status via AJAX
             if (doAjax) {
