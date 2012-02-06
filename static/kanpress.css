@@ -2,9 +2,8 @@
 /* @todo Cargar CSS elegantemente */
 @import "http://localhost/wordpress/wp-includes/js/thickbox/thickbox.css?ver=20111117";
 
-#icono-kanban {
-    /* ¿Dónde se pone la imagen? */
-    /*background: ;*/
+#icono-kanpress {
+    background: transparent url(kanpress.png) left top no-repeat;
 }
 
 .kanban-contenedor {
@@ -87,7 +86,7 @@
     width: auto;
     padding: 5px 10px;
 }
-.tarea .autor {
+.tarea .meta {
     float: right;
     margin: 0;
     width: auto;
@@ -127,7 +126,8 @@
 .tarea-detalles,
 #TB_overlay,
 #TB_window,
-#form-nueva { 
+#form-nueva,
+#asignar-tarea { 
     display: none; 
 }
 
