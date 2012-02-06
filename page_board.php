@@ -52,8 +52,7 @@ if (isset($_POST['enviado'])) {
 if (isset($_POST['assign'])) {
 
     $wpdb->update('wp_kanpress_task', array(
-            'assigned_to' => $_POST['user'],
-            'status' => $_POST['taskStatus']),
+            'assigned_to' => $_POST['user']),
             array('task_id' => $_POST['taskId']));
 }
 

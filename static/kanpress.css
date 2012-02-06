@@ -79,6 +79,7 @@
     text-align: center;
     background: #eee;
     font-size: 10px;
+    text-decoration: none;
 }
 .tarea .pie {
     overflow: hidden;

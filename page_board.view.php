@@ -7,14 +7,14 @@
                 <a href="javascript:void(0)" class="remove-task-link" id="remove-<?php echo $task['task_id'] ?>">Eliminar</a>
             </div>
         
-            <div class="img">
+            <a class="img asignar" href="javascript:void(0)">
             <?php if (intval($task['assigned_to']) > 0) : ?>
                 <!--<img src="http://localhost/wordpress/wp-content/plugins/kanpress/static/isra.jpg" width="50" height="50" class="assigned-to" />-->
                 <?php echo get_avatar($task['assigned_to'], 50, null, $task['user_assigned']) ?>
             <?php else : ?>
                 No asignada
             <?php endif ?>
-            </div>
+            </a>
             
             <?php $prioridades = array("baja", "normal", "alta") ?>
             <h4 class="<?php echo $priorities[$task['priority']] ?>" title="Prioridad <?php echo $prioridades[$task['priority']] ?>">
@@ -39,7 +39,7 @@
             </div>
             <div class="meta">
                 <span class="creation-time"><?php echo hace_tiempo(strtotime($task['time_proposed'])) ?></span>
-                <a href="javascript_void(0)" class="detalles" id="detalles-<?php echo $task['task_id'] ?>">Detalles</a>
+                <a href="javascript:void(0)" class="detalles" id="detalles-<?php echo $task['task_id'] ?>">Detalles</a>
             </div>
         </div>
     </div>
@@ -96,6 +96,24 @@ jQuery(function() {
         $("#TB_window").show();
     });
     
+    /**
+     * Muestra el pop-up para asignar una tarea
+     */
+    $(".asignar").click(function() {
+        //Título del pop-up
+        $("#TB_ajaxWindowTitle").html("Asignar tarea");
+        $("#ventana-contenido").html($("#asignar-tarea").html());
+
+        //Muestra el overlay y el pop-up
+        $("#TB_overlay").show();
+        $("#TB_window").show();
+        $("#user").focus();
+
+        //Pass the task ID to the form
+        taskId = $(this).parent().parent().attr("id").substr(6);
+        $("#taskId").val(taskId);
+    });
+    
     function mostrarPopupNuevoArticulo() {
     
         //Título del pop-up
@@ -113,7 +131,8 @@ jQuery(function() {
     
         if (confirm("¿Seguro que quieres eliminar esta tarea?\n¡No la podrás recuperar!")) {
         
-            //The element ID remove-xxx where xxx is the task ID. 7 is the length of "remove-"
+            //The element ID "remove-xxx" where xxx is the task ID. 
+            //7 is the length of "remove-"
             taskId = $(this).attr("id").substr(7);
             
             /* 
@@ -160,26 +179,15 @@ jQuery(function() {
             taskId = parseInt(task.attr("id").substr(6));
             
             //When dropping to col2 (develop), user have to assign the task
-            if ($(this).parent().attr("id") == "col2") {
+            /*if ($(this).parent().attr("id") == "col2") {
             
                 //If the task has an image, it's assigned, so we don't ask
                 if ($(".ui-draggable-dragging .avatar").length == 0) {
                 
-                    //Título del pop-up
-                    $("#TB_ajaxWindowTitle").html("Asignar tarea");
-                    $("#ventana-contenido").html($("#asignar-tarea").html());
-                    
-                    //Muestra el overlay y el pop-up
-                    $("#TB_overlay").show();
-                    $("#TB_window").show();
-                    $("#user").focus();
-                    
-                    //Pass the task ID to the form
-                    $("#taskId").val(taskId);
                     
                     doAjax = false;
                 }
-            }
+            }*/
             
             //Change status via AJAX
             if (doAjax) {
@@ -287,7 +295,6 @@ jQuery(function() {
 <div id="asignar-tarea">
     <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>" class="kanpress-form">
         <input type="hidden" name="taskId" id="taskId" />
-        <input type="hidden" name="taskStatus" value="1" />
         
         <table class="form-table">
             <tbody>
