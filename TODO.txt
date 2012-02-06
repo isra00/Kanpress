@@ -1,5 +1,8 @@
+-Usar el prefijo de la BD
+-Error/repensar: cuando se mueve una tarea a la columna 2 y no se asigna (cerrando el pop-up), no se actualiza por AJAX el nuevo estado
 -Esquema de BD: revisar tipos de los campos relacionales (longitud...)
 -Esquema de BD: revisar convenio de nombres, etc.
--Añadir capabilities
--Crear nuevas actions para que otros plugins (y este mismo) pueda asociar triggers a eventos de kanban
 -Notificar por email cuando se asigna una tarea (wp_mail())
+-Verificar requisitos del sistema a la instalación (librerías, etc)
+-Añadir capabilities de kanpress
+-Crear nuevas actions para que otros plugins (y este mismo) pueda asociar triggers a eventos de kanpress
