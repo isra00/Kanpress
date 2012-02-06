@@ -7,12 +7,13 @@
                 <a href="javascript:void(0)" class="remove-task-link" id="remove-<?php echo $task['task_id'] ?>">Eliminar</a>
             </div>
         
-            <?php if (!empty($task['assigned_to'])) : ?>
-            <img src="http://localhost/wordpress/wp-content/plugins/kanpress/static/isra.jpg" width="50" height="50" class="assigned-to" />
-            <?php //echo get_avatar($task['assigned_to'], 50, null, $task['user_assigned']) ?>
+            <?php if (intval($task['assigned_to']) > 0) : ?>
+            <!--<img src="http://localhost/wordpress/wp-content/plugins/kanpress/static/isra.jpg" width="50" height="50" class="assigned-to" />-->
+            <?php echo get_avatar($task['assigned_to'], 50, null, $task['user_assigned']) ?>
             <?php endif ?>
             
-            <h4 class="<?php echo $priorities[$task['priority']] ?>">
+            <?php $prioridades = array("baja", "normal", "alta") ?>
+            <h4 class="<?php echo $priorities[$task['priority']] ?>" title="Prioridad <?php echo $prioridades[$task['priority']] ?>">
                 <?php echo $task['summary'] ?>
             </h4>
             <p>
@@ -30,9 +31,9 @@
         <div class="seccion">
             <?php echo $task['name'] ?>
         </div>
-        <div class="autor">
-            <a title="Israel Viana" href=""><?php echo $task['user_proposed'] ?></a> 
-            <span class="creation-time"><?php echo fecha_amigable(strtotime($task['time_proposed'])) ?></span>
+        <div class="meta">
+            <span class="creation-time"><?php echo hace_tiempo(strtotime($task['time_proposed'])) ?></span>
+            <a href="javascript_void(0)" class="detalles" id="detalles-<?php echo $task['task_id'] ?>">Detalles</a>
         </div>
     </div>
 <?php } ?>
@@ -44,6 +45,8 @@
 <script type="text/javascript">
 
 var KANPRESS = '<?php echo plugins_url() ?>/kanpress';
+var anteriorColumna;
+var doAjax = true;
 
 jQuery(function() {
     $ = jQuery;
@@ -107,7 +110,7 @@ jQuery(function() {
             taskId = $(this).attr("id").substr(7);
             
             /* 
-             * For better UX, we remove the task from the HTML before we get the 
+             * For faster response, we remove the task from the HTML before we get the 
              * confirmation from the server
              */
             
@@ -117,10 +120,8 @@ jQuery(function() {
                 });
             //}
             
-            $.post(KANPRESS + '/ajax_remove_task.php', 
-                {task_id: taskId}, 
-                function(response) {
-                });
+            //Performs the AJAX request to remove the task
+            $.post(KANPRESS + '/ajax_remove_task.php', {task_id: taskId});
         }
     });
     
@@ -136,28 +137,65 @@ jQuery(function() {
      * Task drag-and-drop
      */
     $(".tarea").draggable();
+    
     $(".area-tareas").droppable({
         drop: function(event, ui) {
+        
             //When dropping on a column, set the position of the task to the flow
             $(".ui-draggable-dragging")
                 .css("top", 0)
                 .css("left", 0)
                 .appendTo($(this));
             
-            //When dropping to col2 (develop), it's mandatory to assign the task to someone
+            task = $(".ui-draggable-dragging");
+            
+            //Get the task id
+            taskId = parseInt(task.attr("id").substr(6));
+            
+            
+            //When dropping to col2 (develop), user have to assign the task
             if ($(this).parent().attr("id") == "col2") {
+            
                 //If the task has an image, it's assigned, so we don't ask
-                if ($(".ui-draggable-dragging .assigned-to").length == 0) {
-                    alert("Asignar");
+                if ($(".ui-draggable-dragging .avatar").length == 0) {
+                
+                    //Título del pop-up
+                    $("#TB_ajaxWindowTitle").html("Asignar tarea");
+                    $("#ventana-contenido").html($("#asignar-tarea").html());
+                    
+                    //Muestra el overlay y el pop-up
+                    $("#TB_overlay").show();
+                    $("#TB_window").show();
+                    $("#user").focus();
+                    
+                    //Pass the task ID to the form
+                    $("#taskId").val(taskId);
+                    
+                    doAjax = false;
                 }
             }
+            
+            //Change status via AJAX
+            if (doAjax) {
+            
+                newStatus = parseInt($(this).parent().attr("id").substr(3)) - 1;
+                
+                $.post(KANPRESS + '/ajax_move_task.php', {task_id: taskId, status: newStatus});
+                
+                //Shine effect
+                task.animate({opacity: .4}, 200, function() {
+                    task.animate({opacity: 1}, 200);
+                });
+            }
         }
+        
+        //anteriorColumna
     });
 });
 </script>
 
 <div class="wrap">
-	<div id="icono-kanban" class="icon32">
+	<div id="icono-kanpress" class="icon32">
 		<br>
 	</div>
 	<h2>Kanban <a href="javascript:void(0)" class="add-new-h2">Proponer nuevo artículo</a></h2>
@@ -198,40 +236,66 @@ jQuery(function() {
 <div id="TB_window" style="width: 670px; height: auto; margin-left: -335px; top: 100px; margin-top: 0px; visibility: visible; "><div id="TB_title"><div id="TB_ajaxWindowTitle"></div><div id="TB_closeAjaxWindow"><a href="#" id="TB_closeWindowButton" title="Cerrar"><img src="http://localhost/wordpress/wp-includes/js/thickbox/tb-close.png"></a></div></div><div id="ventana-contenido"></div></div>
 
 <div id="form-nueva">
-    <form method="post" action="" class="kanpress-form">
-        <div class="<?php invalido('resumen', $validacion) ?>">
-            <label for="resumen">Resumen:</label>
-            <div>
-                <input id="resumen" name="resumen" type="text" class="regular-text" value="<?php echo stripslashes(htmlentities(post('resumen', true))) ?>" />
-                <span class="sugerencia">Sugerencia</span>
-                <div class="val"><?php if (isset($validacion['resumen'])) echo $validacion['resumen'] ?></div>
-            </div>
-        </div>
-        <div>
-            <label for="descripcion">Descripción:</label>
-            <div>
-                <textarea id="descripcion" name="descripcion" type="text" class="regular-text" cols="25" rows="5"><?php stripslashes(htmlentities(post('descripcion', true))) ?></textarea>
-                <span class="sugerencia">Sugerencia</span>
-            </div>
-        </div>
-        <div>
-            <label for="categoria">Sección:</label>
-            <div>
-                <?php echo form_select('categoria', $categorias, post('categoria', true), null, null) ?>
-                <span class="sugerencia">Sugerencia</span>
-            </div>
-        </div>
-        <div>
-            <label for="prioridad">Prioridad:</label>
-            <div>
-                <?php $prioridad = 1; //Por defecto ?>
-                <?php if (post('prioridad', true)) $prioridad = post('prioridad', true); ?>
-                <?php echo form_select('prioridad', array('Baja', 'Normal', 'Alta'), $prioridad, null, null) ?>
-                <span class="sugerencia">Sugerencia</span>
-            </div>
-        </div>
-        <div>
+    <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>" class="kanpress-form">
+        <table class="form-table">
+            <tbody>
+                <tr class="<?php invalido('resumen', $validacion) ?>">
+	                <th><label for="resumen">Resumen:</label></th>
+	                <td>
+	                    <input id="resumen" name="resumen" type="text" class="regular-text" value="<?php echo stripslashes(htmlentities(post('resumen', true))) ?>" />
+                        <span class="description"></span>
+                        <div class="val"><?php if (isset($validacion['resumen'])) echo $validacion['resumen'] ?>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="descripcion">Descripción:</label></th>
+                    <td>
+                        <textarea id="descripcion" name="descripcion" type="text" class="regular-text" cols="25" rows="5"><?php stripslashes(htmlentities(post('descripcion', true))) ?></textarea>
+                        <span class="description"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="categoria">Sección:</label></th>
+                    <td>
+                        <?php echo form_select('categoria', $categorias, post('categoria', true), null, null) ?>
+                        <span class="description"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <th><label for="prioridad">Prioridad:</label></th>
+                    <?php $prioridad = 1; //Por defecto ?>
+                    <?php if (post('prioridad', true)) $prioridad = post('prioridad', true); ?>
+                    <td><?php echo form_select('prioridad', array('Baja', 'Normal', 'Alta'), $prioridad, null, null) ?>
+                    <span class="description">description</span></td>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+            
+        <p class="submit">
             <button type="submit" name="enviado" class="button-primary margen-arriba">Enviar propuesta</button>
-        </div>
+        </p>
+    </form>
+</div>
+
+<div id="asignar-tarea">
+    <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>" class="kanpress-form">
+        <input type="hidden" name="taskId" id="taskId" />
+        <input type="hidden" name="taskStatus" value="1" />
+        
+        <table class="form-table">
+            <tbody>
+                <tr>
+                    <th><label for="categoria" style="width: auto">Asignar a:</label></th>
+                    <td>
+                        <?php echo form_select('user', $users, null, null, null) ?>
+                        <span class="description">Se enviará una notificación</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="submit">
+            <button type="submit" name="assign" class="button-primary margen-arriba">Asignar tarea</button>
+        </p>
     </form>
 </div>

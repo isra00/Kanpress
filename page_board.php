@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(E_ALL);
+require_once 'util.php';
 
 global $wpdb;
 
@@ -44,6 +44,17 @@ if (isset($_POST['enviado'])) {
                 
         $_POST = array();
     }
+}
+
+/*
+ * Assign or change task status
+ */
+if (isset($_POST['assign'])) {
+
+    $wpdb->update('wp_kanpress_task', array(
+            'assigned_to' => $_POST['user'],
+            'status' => $_POST['taskStatus']),
+            array('task_id' => $_POST['taskId']));
 }
 
 /*
@@ -102,6 +113,13 @@ $categorias = $wpdb->get_results("SELECT wp_terms.term_id, wp_terms.name "
         
 //Prepare array for <select>
 $categorias = array_atributo_valor($categorias);
+
+//Get al the users
+$users = array();
+$usuarios_original = get_users();
+foreach ($usuarios_original as $u) {
+    $users[$u->ID] = $u->display_name;
+}
 
 //Load the view for this page
 wp_enqueue_script('jquery-ui-droppable');
