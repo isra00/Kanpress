@@ -15,8 +15,9 @@
             <h4 class="<?php echo $priorities[$task['priority']] ?>" title="Prioridad <?php echo $prioridades[$task['priority']] ?>">
                 <?php echo $task['summary'] ?>
             </h4>
+            
             <p>
-                <?php echo cortar_texto($task['description'], 80) ?>
+                <span class="task-description-short" id="short-<?php echo $task['task_id'] ?>"><?php echo cortar_texto($task['description'], 80) ?></span>
                 
                 <a href="javascript:void(0)" class="enlace-detalles" id="<?php echo $task['task_id'] ?>">[+info]</a>
                 
@@ -34,7 +35,7 @@
                     
                     <div class="task-description">
                         Descripción: <br />
-                        <textarea rows="4" cols="30"><?php echo $task['description'] ?></textarea>
+                        <textarea rows="4" cols="30" class="edit-description"><?php echo $task['description'] ?></textarea>
                     </div>
                     
                     <ul class="task-history">
@@ -60,7 +61,7 @@
                     
                     <hr /> 
                     
-                    <button type="button" name="assign" class="button-primary margen-arriba" id="btn-guardar">Guardar</button>
+                    <button type="button" name="save" class="button-primary margen-arriba btn-guardar" id="guardar-<?php echo $task['task_id'] ?>">Guardar</button>
                     o <a href="javascript:void(0)" class="cerrar-popup">cerrar sin guardar</a>
                     o <a href="javascript:void(0)" class="remove-task-link" id="remove-<?php echo $task['task_id'] ?>">Eliminar tarea</a>
                 </div>
@@ -158,6 +159,26 @@ jQuery(function() {
                 $.post(KANPRESS + '/ajax_remove_task.php', {task_id: taskId});
             }
         });
+
+        /*
+         * Editar tarea
+         */
+        $(".btn-guardar").click(function() {
+
+            taskId = $(this).attr("id").substr(8);
+            d = $(this).parent().find(".edit-description").val();
+            
+            $("#short-" + taskId).html(d.substr(0, 100) + "...");
+                
+            $.post(KANPRESS + "/ajax_edit_task.php", 
+                {description: d, taskId: taskId}, 
+                function() {
+                    
+                }
+            );
+
+            cerrarPopup();
+        });
     });
     
     /**
@@ -177,6 +198,9 @@ jQuery(function() {
         taskId = $(this).parent().parent().attr("id").substr(6);
         $("#taskId").val(taskId);
         
+        /*
+         * Asignar tarea
+         */
         $("#btn-asignar").click(function() {
 
             taskId = $("#taskId").val();
