@@ -121,6 +121,10 @@ foreach ($usuarios_original as $u) {
     $users[$u->ID] = $u->display_name;
 }
 
-//Load the view for this page
+//Load JS/CSS and the view for this page
 wp_enqueue_script('jquery-ui-droppable');
+wp_enqueue_style('', KANPRESS . '/static/kanpress.css');
+
+//wp_enqueue_style('', includes_url() . '/js/thickbox/thickbox.css');
+
 include 'page_board.view.php';
