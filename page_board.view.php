@@ -112,6 +112,34 @@ jQuery(function() {
         //Pass the task ID to the form
         taskId = $(this).parent().parent().attr("id").substr(6);
         $("#taskId").val(taskId);
+        
+        $("#btn-asignar").click(function() {
+
+            taskId = $("#taskId").val();
+
+            postData = {
+                'taskId': taskId,
+                'user': $("#user").val()
+            };
+            
+            $.ajax({
+                type: 'POST',
+                url: KANPRESS + '/ajax_assign_task.php',
+                dataType: 'html',
+                data: postData,
+                success: function(response) {
+                    $("#tarea-" + taskId + " .asignar").html(response);
+                    
+                    $("#TB_overlay").hide();
+                    $("#TB_window").hide();
+                },
+                error: function() {
+                    
+                    $("#TB_overlay").hide();
+                    $("#TB_window").hide();
+                }
+            });
+        });
     });
     
     function mostrarPopupNuevoArticulo() {
@@ -293,7 +321,7 @@ jQuery(function() {
 </div>
 
 <div id="asignar-tarea">
-    <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>" class="kanpress-form">
+    <form method="post" action="<?php echo KANPRESS ?>'/ajax_assign_task.php" class="kanpress-form">
         <input type="hidden" name="taskId" id="taskId" />
         
         <table class="form-table">
@@ -308,7 +336,7 @@ jQuery(function() {
             </tbody>
         </table>
         <p class="submit">
-            <button type="submit" name="assign" class="button-primary margen-arriba">Asignar tarea</button>
+            <button type="button" name="assign" class="button-primary margen-arriba" id="btn-asignar">Asignar tarea</button>
         </p>
     </form>
 </div>
