@@ -15,6 +15,13 @@
 /*
  * KANBAN BOARD
  */
+ 
+.wrap.responsive-pq {
+    margin-right: 0;
+}
+.responsive-pq .kanban-contenedor {
+    width: 100%;
+}
 
 .tres-col .col {
     width: 30%;
@@ -23,13 +30,25 @@
     float: left;
     border-left: 1px solid silver;
 }
+.responsive-pq .tres-col .col {
+    width: 31%;
+}
 .tres-col .col:first-child {
     margin-left: 0;
     border-left: none;
 }
+.responsive-pq .tres-col #col1 {
+    padding-left: 0;
+}
+.responsive-pq .tres-col #col3 {
+    padding-right: 0;
+}
 
 .col h3 {
     text-align: center;
+}
+.responsive-pq .col h3 {
+    font-size: 1em;
 }
 .col h3 span {
     font-size: 0.9em;
@@ -58,14 +77,29 @@
     background-repeat: no-repeat;
     background-position: left top;
 }
+.responsive-pq .tarea h4 {
+    padding-left: 0;
+    background: none!important;
+    font-weight: normal;
+}
+
 .tarea h4.low {
     background-image: url(pr_low.png);
+}
+.responsive-pq .tarea h4.low {
+    color: #4ca729;
 }
 .tarea h4.high {
     background-image: url(pr_high.png);
 }
+.responsive-pq .tarea h4.high {
+    color: #ed3d40;
+}
 .tarea h4.medium {
     background-image: url(pr_medium.png);
+}
+.responsive-pq .tarea h4.medium {
+    color: #f7c73b;
 }
 .tarea h4 img {
     width: 16px;
@@ -77,6 +111,13 @@
     padding: 0;
     margin: 10px;
     overflow: hidden;
+}
+.responsive-pq .tarea .dentro {
+    margin-bottom: 0;
+}
+
+.responsive-pq .tarea .dentro p {
+    margin-bottom: 0;
 }
 .tarea .dentro > .img {
     float: right;
@@ -116,13 +157,27 @@
     width: auto;
     padding: 5px 10px;
 }
+.responsive-pq .tarea .seccion {
+    margin: 3px;
+    padding: 0;
+    font-size: 1em;
+    border-radius: 0;
+    background: none;
+    float: none;
+    text-align: center;
+}
 .tarea .meta {
     float: right;
     margin: 0;
     width: auto;
     padding: 5px 10px;
 }
-
+.responsive-pq .tarea .meta {
+    float: none;
+    padding: 0;
+    margin: 3px;
+    text-align: center;
+}
 .enlace-detalles {
     text-decoration: none!important;
     font-weight: bold;

@@ -9,7 +9,7 @@ jQuery(function() {
     $ = jQuery;
     
     //Altura del tablero = algo menos de la altura de la página
-    function ajustarAlturaTablero() {
+    function ajustarTablero() {
         altura = $("#footer").position().top - $("#footer").height() - $(".area-tareas:eq(0)").position().top - 50;
         $(".area-tareas").css("min-height", altura + "px");
         
@@ -20,10 +20,18 @@ jQuery(function() {
             mayorAltura = (mayorAltura > altura) ? mayorAltura : altura;
         });
         $(".area-tareas").height(mayorAltura);
+        
+        //Responsive layout
+        if ($(window).width() < 700) {
+            /** @todo Cambiar <h3> "artículos planteados" => "planteados", "pendiente de revisión"=>"pendiente" */
+            $(".wrap").addClass("responsive-pq");
+        } else {
+            $(".wrap").removeClass("responsive-pq");
+        }
     };
     
-    ajustarAlturaTablero();
-    $(window).resize(ajustarAlturaTablero);
+    ajustarTablero();
+    $(window).resize(ajustarTablero);
     
     //Pop-ups (genérico)
     $("#TB_closeWindowButton").click(function() {
