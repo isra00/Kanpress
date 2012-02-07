@@ -148,12 +148,31 @@
 }
 .task-history {
     color: #777;
+    text-align: right;
 }
 .task-history span {
     color: #333;
 }
 .remove-task-link {
     color: red!important;
+}
+.task-post {
+    
+}
+.task-post h5 {
+    margin: 10px 0 5px 0;
+    font-size: 13px;
+}
+.task-post .post-status {
+    color: #777;
+}
+.task-post .post-link {
+    text-decoration: none;
+    color: #21759B!important;
+    font-size: 1.1em;
+}
+.task-post .post-link:hover {
+    text-decoration: underline;
 }
 
 

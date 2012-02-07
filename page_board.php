@@ -90,6 +90,11 @@ foreach ($tasks as &$t) {
         $t['user_revised'] = get_userdata(intval($t['revised_by']))->data->display_name;
     }
     
+    //Fetch the linked post
+    if (intval($t['post_id']) > 0) {
+        $t['post'] = get_post($t['post_id']);
+    }
+    
     //Classify each task into proposed, assigned and pendant
     switch ($t['status']) {
         case 0:

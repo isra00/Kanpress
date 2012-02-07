@@ -8,6 +8,7 @@
 function kanpress_html_task($task) { 
     
     $priorities = array(0=>'slow', 1=>'medium', 2=>'high'); 
+    $estados_post = array('publish'=>'publicado', 'auto-draft'=>'auto-borrador', 'pending'=>'pendiente');
 ?>
     <div class="tarea" id="tarea-<?php echo $task['task_id'] ?>">
         <div class="dentro">
@@ -67,6 +68,18 @@ function kanpress_html_task($task) {
                         </li>
                         <?php endif ?>
                     </ul>
+                    
+                    <div class="task-post">
+                        <h5>Artículo relacionado</h5>
+                        <?php if (intval($task['post_id']) > 0) : ?>
+                            <span class="post-status">[<?php echo strtoupper($estados_post[$task['post']->post_status]) ?>]</span>
+                            <a class="post-link" href="post.php?action=edit&post=<?php echo $task['post']->ID ?>"><?php echo $task['post']->post_title ?></a>
+                            
+                            <span class="post-meta">Modificado <?php echo strtolower(hace_tiempo(strtotime($task['post']->post_modified))) ?></span>
+                        <?php else : ?>
+                        <a href="javascript:void(0)" class="enlazar" id="enlazar-<?php echo $task['post']->ID ?>">Crear artículo</a>
+                        <?php endif ?>
+                    </div>
                     
                     <hr /> 
                     
