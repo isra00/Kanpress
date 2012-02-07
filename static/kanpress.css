@@ -31,6 +31,10 @@
 .col h3 {
     text-align: center;
 }
+.col h3 span {
+    font-size: 0.9em;
+    font-weight: bold;
+}
 .area-tareas {
     
 }

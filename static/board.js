@@ -200,8 +200,24 @@ jQuery(function() {
                     task.animate({opacity: 1}, 200);
                 });
             }
+            
+            //Actualizar los contadores
+            contarTareas();
         }
     });
+    
+    /**
+     * Pone el # de tareas en el título de cada columna
+     */
+    function contarTareas() {
+        $("#col1, #col2, #col3").each(function(n, columna) {
+            tareas = $(columna).find(".tarea").length;
+            $(columna).find("h3 span").html("(" + tareas + ")");
+        });
+    }
+    
+    //Lanzar al inicio, of course
+    contarTareas();
         
     function cerrarPopup() {
         $("#TB_overlay").hide();

@@ -18,7 +18,7 @@ jQuery(function() {
 
     <div class="kanban-contenedor tres-col">
         <div class="col" id="col1">
-            <h3>Artículos planteados</h3>
+            <h3>Artículos planteados <span></span></h3>
             <div class="area-tareas">
                 <?php foreach ($tareas_propuestas as $task) : ?>
                 <?php kanpress_html_task($task) ?>
@@ -26,7 +26,7 @@ jQuery(function() {
             </div>
         </div>
         <div class="col" id="col2">
-            <h3>En desarrollo</h3>
+            <h3>En desarrollo <span></span></h3>
             <div class="area-tareas">
                 <?php foreach ($tareas_asignadas as $task) : ?>
                 <?php kanpress_html_task($task) ?>
@@ -34,7 +34,7 @@ jQuery(function() {
             </div>
         </div>
         <div class="col" id="col3">
-            <h3>Pendiente de revisión</h3>
+            <h3>Pendiente de revisión <span></span></h3>
             <div class="area-tareas">
                 <?php foreach ($tareas_pendientes as $task) : ?>
                 <?php kanpress_html_task($task) ?>
