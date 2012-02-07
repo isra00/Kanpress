@@ -91,14 +91,17 @@
 .tarea .post-is-publish {
     text-align: center;
     border: none;
-    border-top: 1px solid #21759B;
-    border-bottom: 1px solid #21759B;
     color: #21759B;
     padding: 3px;
     font-size: 1.2em;
     font-family: georgia;
     font-style: italic;
+    margin: 5px 0;
 }
+.tarea .post-is-publish a {
+    text-decoration: none;
+}
+
 .tarea .pie {
     overflow: hidden;
 }
@@ -149,6 +152,9 @@
 #form-nueva,
 #asignar-tarea { 
     display: none; 
+}
+#TB_ajaxWindowTitle {
+    font-weight: bold;
 }
 
 #ventana-contenido {

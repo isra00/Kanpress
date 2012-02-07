@@ -102,7 +102,10 @@ function kanpress_html_task($task) {
             
             <?php if ($task['post']->post_status == 'publish') : ?>
             <p class="post-is-publish">
-                Artículo publicado desde <?php echo strtolower(hace_tiempo(strtotime($task['post']->post_modified))) ?>
+                <a href="<?php echo $task['post']->guid ?>">
+                    Publicado <?php echo strtolower(hace_tiempo(strtotime($task['post']->post_modified))) ?>
+                    por <?php echo get_userdata($task['post']->post_author)->data->display_name ?>
+                </a>
             </p>
             <?php endif ?>
         </div>
