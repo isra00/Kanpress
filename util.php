@@ -104,24 +104,24 @@ function fecha_amigable($time, $day_limit = 5)
     if ($diferencia->y == 0 && $diferencia->m == 0 && $diferencia->d == 0) {
         if ($diferencia->h == 0 && $diferencia->i == 0) {
             if ($diferencia->s > 0) {
-                return "Hace " . $diferencia->s . " segundos";
+                return 'Hace ' . $diferencia->s . ' segundos';
             } else {
-                return "Ahora mismo";
+                return 'Ahora mismo';
             }
         }
         if ($diferencia->h == 0) {
-            return "Hace " . $diferencia->i . " minutos";
+            return 'Hace ' . $diferencia->i . ' minutos';
         } else {
-            $salida = "Hace " . $diferencia->h . " hora";
-            if ($diferencia->h > 1) $salida .= "s";
+            $salida = 'Hace ' . $diferencia->h . ' hora';
+            if ($diferencia->h > 1) $salida .= 's';
             return $salida;
         }
     } else {
         if ($diferencia->y == 0 && $diferencia->m == 0) {
             if ($diferencia->d == 1) {
-                return "Ayer";
+                return 'Ayer';
             } else {
-                return "Hace " . $diferencia->d . " días";
+                return 'Hace ' . $diferencia->d . ' días';
             }
         } else {
             return fecha_dia_mes($time);
@@ -132,7 +132,7 @@ function fecha_amigable($time, $day_limit = 5)
 
 /**
  * Formatea una fecha como "hace x tiempo". Si tiempo > 1 mes, formato español
- * @todo Revisar esta función
+ * @todo Revisar esta función (D&G)
  *
  * @param   int     $fecha_unix         La fecha en formato timestamp
  * @return  string  Fecha formateada
@@ -142,27 +142,30 @@ function hace_tiempo($fecha_unix) {
 
     //obtener la diferencia de segundos
     $segundos = $ahora - $fecha_unix;
+    
+    if ($segundos < 60) {
+        return 'Hace ' . $segundos . ' segundos';
+    }
 
-    //dias es la division de n segs entre 86400 segundos que representa un dia;
+    //dias es la division de n segs entre 86400 segundos que representa un dia
     $dias = floor($segundos / 86400);
 
-    //mod_hora es el sobrante, en horas, de la division de días;
+    //mod_hora es el sobrante, en horas, de la division de días
     $mod_hora = $segundos % 86400;
 
-    //hora es la division entre el sobrante de horas y 3600 segundos que representa una hora;
+    //hora es la division entre el sobrante de horas y 3600 segundos que representa +una hora
     $horas = floor($mod_hora / 3600);
 
-    //mod_minuto es el sobrante, en minutos, de la division de horas;
+    //mod_minuto es el sobrante, en minutos, de la division de horas
     $mod_minuto = $mod_hora % 3600;
 
-    //minuto es la division entre el sobrante y 60 segundos que representa un minuto;
+    //minuto es la division entre el sobrante y 60 segundos que representa un minuto
     $minutos = floor($mod_minuto / 60);
 
     if ($horas <= 0) {
-        return 'Hace ' . $minutos . " minutos";
+        return 'Hace ' . $minutos . ' minutos';
     } elseif ($dias <= 0) {
-        //echo $horas . " horas " . $minutos . " minutos";
-        return 'Hace ' . $horas . " horas ";
+        return 'Hace ' . $horas . ' horas ';
     } else {
         return strftime('%e de %B', $fecha_unix);
     }
