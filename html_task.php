@@ -27,7 +27,7 @@ function kanpress_html_task($task) {
             </h4>
             
             <p>
-                <span class="task-description-short" id="short-<?php echo $task['task_id'] ?>"><?php echo cortar_texto($task['description'], 80) ?></span>
+                <span class="task-description-short" id="short-<?php echo $task['task_id'] ?>"><?php echo htmlentities(cortar_texto($task['description'], 80)) ?></span>
                 
                 <a href="javascript:void(0)" class="enlace-detalles" id="<?php echo $task['task_id'] ?>">[+info]</a>
                 
@@ -45,7 +45,7 @@ function kanpress_html_task($task) {
                     
                     <div class="task-description">
                         Descripción: <br />
-                        <textarea rows="4" cols="30" class="edit-description"><?php echo $task['description'] ?></textarea>
+                        <textarea rows="4" cols="30" class="edit-description"><?php echo htmlentities($task['description']) ?></textarea>
                     </div>
                     
                     <ul class="task-history">
