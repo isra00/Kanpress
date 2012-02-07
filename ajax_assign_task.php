@@ -27,6 +27,7 @@ if (current_user_can('edit_users')) {
 
             $user = $user[0];
             
+            /** @todo Use mysql function NOW() for the time_assigned field */
             $wpdb->update($wpdb->prefix . 'kanpress_task', 
                     array('assigned_to' => $_POST['user'], 'time_assigned' => date('Y-m-d H:i:s')), 
                     array('task_id' => $_POST['taskId']));
