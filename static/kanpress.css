@@ -108,6 +108,7 @@
 
 .enlace-detalles {
     text-decoration: none!important;
+    font-weight: bold;
 }
 
 .creation-time {
