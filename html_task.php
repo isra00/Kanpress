@@ -70,7 +70,7 @@ function kanpress_html_task($task) {
                     </ul>
                     
                     <div class="task-post">
-                        <h5>Artículo relacionado</h5>
+                        <h5>Artículo enlazado</h5>
                         <?php if (intval($task['post_id']) > 0) : ?>
                             <span class="post-status">[<?php echo strtoupper($estados_post[$task['post']->post_status]) ?>]</span>
                             <a class="post-link" href="post.php?action=edit&post=<?php echo $task['post']->ID ?>"><?php echo $task['post']->post_title ?></a>
