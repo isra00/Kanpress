@@ -16,16 +16,12 @@ if (current_user_can('edit_users')) {
     if (isset($_POST['task_id'])) {
 
         $taskId = intval($_POST['task_id']);
-        if ($taskId <= 0) { /** @todo Error 403 */
-        }
+        if ($taskId <= 0) { /** @todo Error 403 */ }
 
-        $q_task = "SELECT * FROM " . $wpdb->prefix . "kanpress_task WHERE task_id = '$taskId'";
-        $task = $wpdb->get_results($select, ARRAY_A);
+        $q_task = 'SELECT * FROM ' . TABLE_TASK . ' WHERE task_id = %d LIMIT 1';
+        $task = $wpdb->get_row($wpdb->prepare($select, $taskId), ARRAY_A);
 
-        if (empty($task)) { /** @todo Error 403 */
-        }
-
-        $task = $task[0];
+        if (empty($task)) { /** @todo Error 403 */ }
 
         $post_data = array(
             'post_title'    => ' ',

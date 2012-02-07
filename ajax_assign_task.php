@@ -19,13 +19,11 @@ if (current_user_can('edit_users')) {
          * Checks wether the specified user ID exists 
          */
         $q_select = 'SELECT ID, display_name FROM ' . $wpdb->prefix . 'users '
-                . 'WHERE ID = ' . intval($_POST['user']);
+                . 'WHERE ID = %d';
 
-        $user = $wpdb->get_results($q_select, ARRAY_A);
+        $user = $wpdb->get_row($wpdb->prepare($q_select, intval($_POST['user'])), ARRAY_A);
 
         if (!empty($user)) {
-
-            $user = $user[0];
             
             /** @todo Use mysql function NOW() for the time_assigned field */
             $wpdb->update($wpdb->prefix . 'kanpress_task', 
