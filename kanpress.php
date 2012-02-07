@@ -15,6 +15,7 @@ License: LGPL
  */
 define('CAPABILITY_REMOVE_TASKS', 'delete_post');
 define('KANPRESS', plugins_url('', __FILE__));
+define('TABLE_TASK', $wpdb->prefix . 'kanpress_task');
 
 /*
  * Initialization
