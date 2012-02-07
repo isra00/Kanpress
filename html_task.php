@@ -32,7 +32,7 @@ function kanpress_html_task($task) {
             <p>
                 <span class="task-description-short" id="short-<?php echo $task['task_id'] ?>"><?php echo htmlentities(cortar_texto($task['description'], 80)) ?></span>
                 
-                <a href="javascript:void(0)" class="enlace-detalles" id="<?php echo $task['task_id'] ?>">[+info]</a>
+                <a href="javascript:void(0)" class="enlace-detalles" id="<?php echo $task['task_id'] ?>">+info</a>
                 
                 <div id="detalles-<?php echo $task['task_id'] ?>" class="tarea-detalles">
                     <p class="asignacion">

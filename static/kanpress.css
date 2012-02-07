@@ -91,11 +91,11 @@
 .tarea .post-is-publish {
     text-align: center;
     border: none;
-    border-top: 1px solid #4ca729;
-    border-bottom: 1px solid #4ca729;
+    border-top: 1px solid #21759B;
+    border-bottom: 1px solid #21759B;
+    color: #21759B;
     padding: 3px;
     font-size: 1.2em;
-    color: #4ca729;
     font-family: georgia;
     font-style: italic;
 }
@@ -123,6 +123,15 @@
 .enlace-detalles {
     text-decoration: none!important;
     font-weight: bold;
+    font-size: 1.1em;
+    background: #21759B;
+    color: white;
+    padding: 0 4px;
+    border-radius: 4px;
+}
+.enlace-detalles:hover {
+    background: #D54E21;
+    color: white!important;
 }
 
 .creation-time {
