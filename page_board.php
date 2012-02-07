@@ -122,8 +122,9 @@ foreach ($usuarios_original as $u) {
 
 //Load JS/CSS and the view for this page
 wp_enqueue_script('jquery-ui-droppable');
-wp_enqueue_style('', KANPRESS . '/static/kanpress.css');
-
+wp_enqueue_script('board', KANPRESS . '/static/board.js');
+wp_enqueue_style('kanpress', KANPRESS . '/static/kanpress.css');
 //wp_enqueue_style('', includes_url() . '/js/thickbox/thickbox.css');
 
+require 'html_task.php';
 include 'page_board.view.php';
