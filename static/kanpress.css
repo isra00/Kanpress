@@ -143,13 +143,10 @@
     width: 100%!important;
 }
 .task-history {
-    font-family: georgia;
-    font-style: italic;
+    color: #777;
 }
 .task-history span {
-    font-family: arial;
-    font-style: normal;
-    font-size: 1em;
+    color: #333;
 }
 .remove-task-link {
     color: red!important;
