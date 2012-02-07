@@ -7,7 +7,7 @@
 
 function kanpress_html_task($task) { 
     
-    $priorities = array(0=>'slow', 1=>'medium', 2=>'high'); 
+    $priorities = array(0=>'low', 1=>'medium', 2=>'high'); 
     $estados_post = array('publish'=>'publicado', 'auto-draft'=>'auto-borrador', 'pending'=>'pendiente', 'draft'=>'borrador');
     
     $task_classes = '';
