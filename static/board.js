@@ -85,6 +85,7 @@ jQuery(function() {
             taskId = $(this).attr("id").substr(8);
             d = $(this).parent().find(".edit-description").val();
             
+            /** @todo No poner ... si la cadena < 101 caracteres */
             $("#short-" + taskId).html(d.substr(0, 100) + "...");
                 
             $.post(KANPRESS + "/ajax_edit_task.php", 
