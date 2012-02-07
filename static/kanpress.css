@@ -47,6 +47,9 @@
     overflow: hidden;
     background: white;
 }
+.tarea.post-published {
+    background: #EEF;
+}
 .tarea h4 {
     margin-top: 0;
     font-size: 1.1em;
@@ -84,6 +87,17 @@
     background: #eee;
     font-size: 10px;
     text-decoration: none;
+}
+.tarea .post-is-publish {
+    text-align: center;
+    border: none;
+    border-top: 1px solid #4ca729;
+    border-bottom: 1px solid #4ca729;
+    padding: 3px;
+    font-size: 1.2em;
+    color: #4ca729;
+    font-family: georgia;
+    font-style: italic;
 }
 .tarea .pie {
     overflow: hidden;
@@ -175,6 +189,9 @@
 .task-post .post-link:hover {
     text-decoration: underline;
 }
+.task-post .post-meta {
+    color: #777;
+}
 
 
 /*
@@ -237,4 +254,7 @@
 hr {
     border: none;
     border-top: 1px solid silver;
+}
+.bold {
+    font-weight: bold;
 }

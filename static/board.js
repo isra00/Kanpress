@@ -97,6 +97,33 @@ jQuery(function() {
 
             cerrarPopup();
         });
+        
+        /*
+        * Enlazar artículo (crea un nuevo artículo y redirige al panel de edición)
+        */
+        $(".create-article").click(function() {
+            taskId = $(this).attr("id").substr(7);
+            
+            /** @todo Sustituir elemento <a> por <span> */
+            $(this)
+                .css("text-decoration", "none")
+                .html('<img src="images/loading.gif" /> Creando...');
+            
+            $.ajax({
+                type: "POST",
+                dataType: "text",
+                data: { task_id: taskId },
+                url: KANPRESS + "/ajax_link_task.php",
+                
+                success: function(postId) {
+                    //The HTTP response must be the linked post ID
+                    location.href = "post.php?action=edit&post=" + postId;
+                },
+                error: function() {
+                    /** @todo Handle 400 and 403 errors */
+                }
+            });
+        });
     });
     
     /**
@@ -218,7 +245,7 @@ jQuery(function() {
     }
     
     //Lanzar al inicio, of course
-    contarTareas();
+    contarTareas();    
         
     function cerrarPopup() {
         $("#TB_overlay").hide();

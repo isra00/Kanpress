@@ -8,9 +8,12 @@
 function kanpress_html_task($task) { 
     
     $priorities = array(0=>'slow', 1=>'medium', 2=>'high'); 
-    $estados_post = array('publish'=>'publicado', 'auto-draft'=>'auto-borrador', 'pending'=>'pendiente');
+    $estados_post = array('publish'=>'publicado', 'auto-draft'=>'auto-borrador', 'pending'=>'pendiente', 'draft'=>'borrador');
+    
+    $task_classes = '';
+    if ($task['post']->post_status == 'publish') $task_classes .= 'post-published ';
 ?>
-    <div class="tarea" id="tarea-<?php echo $task['task_id'] ?>">
+    <div class="tarea <?php echo $task_classes ?>" id="tarea-<?php echo $task['task_id'] ?>">
         <div class="dentro">
         
             <a class="img asignar" href="javascript:void(0)">
@@ -70,14 +73,22 @@ function kanpress_html_task($task) {
                     </ul>
                     
                     <div class="task-post">
-                        <h5>Artículo enlazado</h5>
+                        <?php /** @todo Poner "no hay artículo enlazado" si se da el caso */ ?>
                         <?php if (intval($task['post_id']) > 0) : ?>
-                            <span class="post-status">[<?php echo strtoupper($estados_post[$task['post']->post_status]) ?>]</span>
-                            <a class="post-link" href="post.php?action=edit&post=<?php echo $task['post']->ID ?>"><?php echo $task['post']->post_title ?></a>
+                        
+                            <h5>Artículo respectivo</h5>
+                            <?php $titulo = (strlen(trim($task['post']->post_title)) > 0) ? $task['post']->post_title : '(Sin título)' ?>
                             
-                            <span class="post-meta">Modificado <?php echo strtolower(hace_tiempo(strtotime($task['post']->post_modified))) ?></span>
+                            <span class="post-status <?php if ($task['post']->post_status == 'publish') echo 'bold'?>">[<?php echo strtoupper($estados_post[$task['post']->post_status]) ?>]</span>
+                            
+                            <a class="post-link" href="post.php?action=edit&post=<?php echo $task['post']->ID ?>"><?php echo $titulo ?></a>
+                            
+                            <span class="post-meta"> · Modificado <?php echo strtolower(hace_tiempo(strtotime($task['post']->post_modified))) ?></span>
+                            
                         <?php else : ?>
-                        <a href="javascript:void(0)" class="enlazar" id="enlazar-<?php echo $task['post']->ID ?>">Crear artículo</a>
+                            <a href="javascript:void(0)" class="create-article" id="create-<?php echo $task['task_id'] ?>">
+                                Crear artículo correspondiente
+                            </a>
                         <?php endif ?>
                     </div>
                     
@@ -88,6 +99,12 @@ function kanpress_html_task($task) {
                     o <a href="javascript:void(0)" class="remove-task-link" id="remove-<?php echo $task['task_id'] ?>">Eliminar tarea</a>
                 </div>
             </p>
+            
+            <?php if ($task['post']->post_status == 'publish') : ?>
+            <p class="post-is-publish">
+                Artículo publicado desde <?php echo strtolower(hace_tiempo(strtotime($task['post']->post_modified))) ?>
+            </p>
+            <?php endif ?>
         </div>
         
         <div class="pie">
