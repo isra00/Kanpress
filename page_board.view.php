@@ -12,7 +12,7 @@ jQuery(function() {
 
 <div class="wrap">
     <div id="icono-kanpress" class="icon32"><br></div>
-    <h2>Kanban <a href="javascript:void(0)" class="add-new-h2">Proponer nuevo artículo</a></h2>
+    <h2>Kanpress <a href="javascript:void(0)" class="add-new-h2">Proponer nuevo artículo</a></h2>
 
     <div class="kanban-contenedor tres-col">
         <div class="col" id="col1">
