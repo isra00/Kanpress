@@ -1,2 +1,2 @@
 <?php
-// Silence is golden.
+//Nada por aquí, nada por allá
