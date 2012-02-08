@@ -261,3 +261,11 @@ function post($indice, $devolver=false) {
         else return null;
     }
 }
+
+/**
+ * Imprime una cadena escapando caracteres UTF en HTML
+ * @param type $cadena 
+ */
+function e($cadena) {
+    echo htmlentities($cadena, null, 'UTF-8');
+}
