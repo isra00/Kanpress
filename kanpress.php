@@ -60,18 +60,27 @@ add_action('admin_menu', 'kanpress_create_admin_menu');
  */
 function kanpress_create_db_schema() {
     global $wpdb;
-    /** @todo Implementar realmente! Esto es código de ejemplo!! */
-    /*$sql = $wpdb->prepare( "CREATE TABLE %s (
-            id mediumint(9) NOT NULL AUTO_INCREMENT,
-            time datetime DEFAULT '0000-00-00 00:00:00' NOT NULL,
-            name tinytext NOT NULL,
-            text text NOT NULL,
-            url VARCHAR(55) DEFAULT '' NOT NULL,
-            UNIQUE KEY id (id)
-            );", $table_name);
-
+    
+    $sql = "CREATE TABLE " . $wpdb->prefix . "kanpress_task (
+            task_id int(10) unsigned NOT NULL AUTO_INCREMENT,
+            proposed_by bigint(20) unsigned NOT NULL,
+            assigned_to bigint(20) unsigned DEFAULT NULL,
+            revised_by bigint(20) unsigned DEFAULT NULL,
+            term_id bigint(20) unsigned NOT NULL,
+            post_id bigint(20) unsigned DEFAULT NULL,
+            priority tinyint(4) unsigned NOT NULL,
+            status tinyint(4) unsigned NOT NULL COMMENT '0=propuesta, 1=asignada, 2=pendiente, 3=terminada',
+            summary varchar(256) COLLATE utf8_spanish_ci NOT NULL,
+            description text COLLATE utf8_spanish_ci NOT NULL,
+            time_proposed timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+            time_assigned timestamp NULL DEFAULT '0000-00-00 00:00:00',
+            time_done timestamp NULL DEFAULT '0000-00-00 00:00:00',
+            PRIMARY KEY (task_id)
+            );";
+    
     require_once(ABSPATH . 'wp-admin/includes/upgrade.php');
-    dbDelta($sql);*/
+    dbDelta($sql);
 }
 
-register_activation_hook(__FILE__,'jal_install');
+//Plug-in activation function
+register_activation_hook(__FILE__, 'kanpress_create_db_schema');
