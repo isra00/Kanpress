@@ -6,3 +6,8 @@
 -Verificar requisitos del sistema a la instalación (librerías, etc)
 -Añadir capabilities de kanpress
 -Crear nuevas actions para que otros plugins (y este mismo) pueda asociar triggers a eventos de kanpress
+-Investigar cómo minimizar CSS+JS (build?)
+-Popup detalles: poner el título fuera de la tarea fuera del título del pop-up, y ponerle el icono de prioridad, y que se pueda cambiar con un click.
+-Diseño: pegarle un repaso al pie del popup de detalles
+-Si no se encuentra la tabla kanpress_task intentar solucionar e informar elegantemente al usuario
+-Manejo de errores!!!!
