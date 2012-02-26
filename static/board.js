@@ -78,6 +78,33 @@ function cerrarPopup() {
     $("#TB_overlay").hide();
     $("#TB_window").hide();
 }
+
+
+function eliminarTarea() {
+    if (confirm("¿Seguro que quieres eliminar esta tarea?\n¡No la podrás recuperar!")) {
+
+        //The element ID "remove-xxx" where xxx is the task ID. 
+        //7 is the length of "remove-"
+        taskId = $(this).attr("id").substr(7);
+
+        /* 
+        * For faster response, we remove the task from the HTML before we 
+        * get the confirmation from the server
+        */
+
+        //if (parseInt(response) == 1) {
+            $("#tarea-" + taskId).hide('slow', function() {
+                $(this).remove();
+            });
+
+            //Hide the popup also
+            cerrarPopup();
+        //}
+
+        //Performs the AJAX request to remove the task
+        $.post(KANPRESS + '/ajax_remove_task.php', {task_id: taskId});
+    }
+}
     
 $(function() {
     
@@ -96,6 +123,8 @@ $(function() {
     //Pop-up (nueva tarea)
     $(".add-new-h2").click(mostrarPopupNuevoArticulo);
     
+    //Enlaces "eliminar tarea" fuera del popup (=artículos publicados)
+    $(".remove-task-link").click(eliminarTarea);
     
     //Pop-up (detalles de tarea)
     $(".enlace-detalles").click(function() {
@@ -116,32 +145,7 @@ $(function() {
         });
         
         //Enlace "eliminar tarea"
-        $(".remove-task-link").click(function() {
-
-            if (confirm("¿Seguro que quieres eliminar esta tarea?\n¡No la podrás recuperar!")) {
-
-                //The element ID "remove-xxx" where xxx is the task ID. 
-                //7 is the length of "remove-"
-                taskId = $(this).attr("id").substr(7);
-
-                /* 
-                * For faster response, we remove the task from the HTML before we 
-                * get the confirmation from the server
-                */
-
-                //if (parseInt(response) == 1) {
-                    $("#tarea-" + taskId).hide('slow', function() {
-                        $(this).remove();
-                    });
-
-                    //Hide the popup also
-                    cerrarPopup();
-                //}
-
-                //Performs the AJAX request to remove the task
-                $.post(KANPRESS + '/ajax_remove_task.php', {task_id: taskId});
-            }
-        });
+        $(".remove-task-link").click(eliminarTarea);
 
         /*
          * Editar tarea

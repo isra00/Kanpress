@@ -106,6 +106,7 @@ function kanpress_html_task($task) {
                     Publicado <?php echo strtolower(hace_tiempo(strtotime($task['post']->post_modified))) ?>
                     por <?php echo get_userdata($task['post']->post_author)->data->display_name ?>
                 </a>
+                <div class="centro"><a href="javascript:void(0)" class="remove-task-link" id="remove-<?php echo $task['task_id'] ?>">Eliminar tarea</a></div>
             </p>
             <?php endif ?>
         </div>
