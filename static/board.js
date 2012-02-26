@@ -153,7 +153,13 @@ $(function() {
         
         //Pone el contenido apropiado dentro del pop-up
         idTarea = $(this).attr("id");
-        $("#ventana-contenido").html($("#detalles-" + idTarea).html());
+        
+        /*
+         * Mueve el .tarea-detalles al pop-up y oculta los "hermanos" que ya
+         * estuvieran dentro
+         */
+        $("#ventana-contenido .tarea-detalles").hide();
+        $("#detalles-" + idTarea).appendTo($("#ventana-contenido")).show();
         
         //Muestra el overlay y el pop-up
         abrirPopup();
@@ -231,6 +237,7 @@ $(function() {
             });
         });
     });
+    
     
     /**
      * Muestra el pop-up para asignar una tarea
