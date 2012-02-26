@@ -170,21 +170,38 @@ $(function() {
          * Editar tarea
          */
         $(".btn-guardar").click(function() {
+            
+            priorities = ["low", "medium", "high"];
 
             taskId = $(this).attr("id").substr(8);
-            d = $(this).parent().find(".edit-description").val();
+            formulario = $(this).parent();
+            description = formulario.find(".edit-description").val();
+            priority = formulario.find(".task-priority select").val();
+            category = formulario.find(".task-category select").val();
             
-            /** @todo No poner ... si la cadena < 101 caracteres */
-            $("#short-" + taskId).html(d.substr(0, 100) + "...");
-                
+            //Show the new values in the task card...
+            descriptionToShow = (description.length > 100) ? description.substr(0, 100) + "..." : description;
+            $("#short-" + taskId).html(descriptionToShow);
+            $("#tarea-" + taskId).find("h4").attr("class", priorities[priority]);
+            categoryName = formulario.find(".task-category select option:selected").html();
+            $("#tarea-" + taskId).find(".seccion").html(categoryName);
+            
+            $("#tarea-" + taskId).find(".edit-description").val(description);
+            
+            cerrarPopup();
+            
+            //...and send them to the server via AJAX
             $.post(KANPRESS + "/ajax_edit_task.php", 
-                {description: d, taskId: taskId}, 
+                {
+                    description: description, 
+                    taskId: taskId,
+                    priority: priority,
+                    category: category
+                }, 
                 function() {
                     
                 }
             );
-
-            cerrarPopup();
         });
         
         /*

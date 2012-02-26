@@ -19,7 +19,7 @@ jQuery(function() {
             <h3>Artículos planteados <span></span></h3>
             <div class="area-tareas">
                 <?php foreach ($tareas_propuestas as $task) : ?>
-                <?php kanpress_html_task($task) ?>
+                <?php kanpress_html_task($task, $categorias) ?>
                 <?php endforeach ?>
             </div>
         </div>
@@ -27,7 +27,7 @@ jQuery(function() {
             <h3>En desarrollo <span></span></h3>
             <div class="area-tareas">
                 <?php foreach ($tareas_asignadas as $task) : ?>
-                <?php kanpress_html_task($task) ?>
+                <?php kanpress_html_task($task, $categorias) ?>
                 <?php endforeach ?>
             </div>
         </div>
@@ -35,7 +35,7 @@ jQuery(function() {
             <h3>Pendiente de revisión <span></span></h3>
             <div class="area-tareas">
                 <?php foreach ($tareas_pendientes as $task) : ?>
-                <?php kanpress_html_task($task) ?>
+                <?php kanpress_html_task($task, $categorias) ?>
                 <?php endforeach ?>
             </div>
         </div>

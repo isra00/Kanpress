@@ -3,9 +3,11 @@
 /**
  * Single task template
  * @param array $task Task data
+ * @param array $categories Array containing every category in the DB
+ * 
+ * @todo En vez de pasar las categorías como parámetro, buscar algo más elegante
  */
-
-function kanpress_html_task($task) { 
+function kanpress_html_task($task, $categories) { 
     
     $priorities = array(0=>'low', 1=>'medium', 2=>'high'); 
     $estados_post = array('publish'=>'publicado', 'auto-draft'=>'auto-borrador', 'pending'=>'pendiente', 'draft'=>'borrador');
@@ -46,6 +48,17 @@ function kanpress_html_task($task) {
                         <?php echo $task['user_assigned'] ?>
                     <?php endif ?>
                     </p>
+                    
+                    <div class="overflow">
+                        <div class="task-category">
+                            <label for="category-<?php echo $task['task_id'] ?>">Categoría:</label>
+                            <?php echo form_select('category-' .  $task['task_id'], $categories, $task['term_id'], null, null) ?>
+                        </div>
+                        <div class="task-priority">
+                            <label for="priority-<?php echo $task['task_id'] ?>">Prioridad:</label>
+                            <?php echo form_select('priority-' .  $task['task_id'], $prioridades, $task['priority'], null, null) ?>
+                        </div>
+                    </div>
                     
                     <div class="task-description">
                         Descripción: <br />

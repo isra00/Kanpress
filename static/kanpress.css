@@ -243,6 +243,15 @@
     float: left;
     margin: 0 10px 0 0;
 }
+.task-priority {
+    float: left;
+    width: 45%;
+}
+.task-category {
+    float: right;
+    width: 45%;
+    margin: 0 0 10px;
+}
 .task-description textarea {
     width: 100%!important;
 }
@@ -342,4 +351,7 @@ hr {
 }
 .bold {
     font-weight: bold;
+}
+.overflow {
+    overflow: hidden;
 }
