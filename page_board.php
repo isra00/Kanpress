@@ -109,10 +109,10 @@ foreach ($tasks as &$t) {
     }
 }
 
-$categorias = $wpdb->get_results("SELECT wp_terms.term_id, wp_terms.name "
-        . "FROM wp_terms JOIN wp_term_taxonomy "
-        . "ON wp_term_taxonomy.term_id = wp_terms.term_id "
-        . "WHERE wp_term_taxonomy.taxonomy = 'category' "
+$categorias = $wpdb->get_results("SELECT " . $wpdb->prefix . "terms.term_id, " . $wpdb->prefix . "terms.name "
+        . "FROM " . $wpdb->prefix . "terms JOIN " . $wpdb->prefix . "term_taxonomy "
+        . "ON " . $wpdb->prefix . "term_taxonomy.term_id = " . $wpdb->prefix . "terms.term_id "
+        . "WHERE " . $wpdb->prefix . "term_taxonomy.taxonomy = 'category' "
         . "ORDER BY name ASC", ARRAY_A);
         
 //Prepare array for <select>
