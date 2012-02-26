@@ -5,31 +5,83 @@
 var anteriorColumna;
 var doAjax = true;
 
-jQuery(function() {
-    $ = jQuery;
+$ = jQuery;
     
-    //Altura del tablero = algo menos de la altura de la página
-    function ajustarTablero() {
-        altura = $("#footer").position().top - $("#footer").height() - $(".area-tareas:eq(0)").position().top - 50;
-        $(".area-tareas").css("min-height", altura + "px");
-        
-        //Iguala las alturas de todos los .area-tareas
-        mayorAltura = 0;
-        $.each($(".area-tareas"), function(indice, elemento) {
-            altura = $(elemento).height();
-            mayorAltura = (mayorAltura > altura) ? mayorAltura : altura;
-        });
-        $(".area-tareas").height(mayorAltura);
-        
-        //Responsive layout
-        if ($(window).width() < 700) {
-            /** @todo Cambiar <h3> "artículos planteados" => "planteados", "pendiente de revisión"=>"pendiente" */
-            $(".wrap").addClass("responsive-pq");
-        } else {
-            $(".wrap").removeClass("responsive-pq");
-        }
-    };
+/**
+ * Altura del tablero = algo menos de la altura de la página
+ */
+function ajustarTablero() {
+    altura = $("#footer").position().top - $("#footer").height() - $(".area-tareas:eq(0)").position().top - 50;
+    $(".area-tareas").css("min-height", altura + "px");
+
+    //Iguala las alturas de todos los .area-tareas
+    mayorAltura = 0;
+    $.each($(".area-tareas"), function(indice, elemento) {
+        altura = $(elemento).height();
+        mayorAltura = (mayorAltura > altura) ? mayorAltura : altura;
+    });
+    $(".area-tareas").height(mayorAltura);
+
+    //Responsive layout
+    if ($(window).width() < 700) {
+        /** @todo Cambiar <h3> "artículos planteados" => "planteados", "pendiente de revisión"=>"pendiente" */
+        $(".wrap").addClass("responsive-pq");
+    } else {
+        $(".wrap").removeClass("responsive-pq");
+    }
+};
+
+
+/**
+ * Pone el # de tareas en el título de cada columna
+ */
+function contarTareas() {
+    $("#col1, #col2, #col3").each(function(n, columna) {
+        tareas = $(columna).find(".tarea").length;
+        $(columna).find("h3 span").html("(" + tareas + ")");
+    });
+}
+
+
+function mostrarPopupNuevoArticulo() {
+
+    //Título del pop-up
+    $("#TB_ajaxWindowTitle").html("Proponer nuevo artículo");
+    $("#ventana-contenido").html($("#form-nueva").html());
+
+    //Muestra el overlay y el pop-up
+    abrirPopup();
+    $("#resumen").focus();
+}
+
+
+/**
+ * Muestra y centra el pop-up thickbox
+ */
+function abrirPopup() {
+    /*
+     * Por algún motivo que desconozco, el left empieza a contar en #wpbody, no 
+     * en el principio de la pantalla
+     */
+    leftPosition = (screen.width / 2) - ($("#TB_window").width() / 2) - $("#wpbody").position().left;
+    $("#TB_window").css("left", leftPosition + "px");
     
+    $("#TB_overlay").show();
+    $("#TB_window").show();
+}
+
+
+/**
+ * Oculta el pop-up thickbox
+ */
+function cerrarPopup() {
+    $("#TB_overlay").hide();
+    $("#TB_window").hide();
+}
+    
+$(function() {
+    
+    //Ajustar altura del tablero al inicio y cuando la ventana se redimensione
     ajustarTablero();
     $(window).resize(ajustarTablero);
     
@@ -37,6 +89,13 @@ jQuery(function() {
     $("#TB_closeWindowButton").click(function() {
         cerrarPopup();
     });
+    
+    //Lanzar al inicio, of course
+    contarTareas();
+    
+    //Pop-up (nueva tarea)
+    $(".add-new-h2").click(mostrarPopupNuevoArticulo);
+    
     
     //Pop-up (detalles de tarea)
     $(".enlace-detalles").click(function() {
@@ -186,22 +245,6 @@ jQuery(function() {
         });
     });
     
-    
-    function mostrarPopupNuevoArticulo() {
-    
-        //Título del pop-up
-        $("#TB_ajaxWindowTitle").html("Proponer nuevo artículo");
-        $("#ventana-contenido").html($("#form-nueva").html());
-        
-        //Muestra el overlay y el pop-up
-        abrirPopup();
-        $("#resumen").focus();
-    }
-    
-    //Pop-up (nueva tarea)
-    $(".add-new-h2").click(mostrarPopupNuevoArticulo);
-    
-    
     /**
      * Task drag-and-drop
      */
@@ -238,30 +281,4 @@ jQuery(function() {
             contarTareas();
         }
     });
-    
-    /**
-     * Pone el # de tareas en el título de cada columna
-     */
-    function contarTareas() {
-        $("#col1, #col2, #col3").each(function(n, columna) {
-            tareas = $(columna).find(".tarea").length;
-            $(columna).find("h3 span").html("(" + tareas + ")");
-        });
-    }
-    
-    //Lanzar al inicio, of course
-    contarTareas();    
-        
-    function abrirPopup() {
-        $("#TB_overlay").show();
-        $("#TB_window").show();
-        //Por algún motivo que desconozco, el left empieza a contar en #wpbody, no en el principio de la pantalla
-        leftPosition = (screen.width / 2) - ($("#TB_window").width() / 2) - $("#wpbody").position().left;
-        $("#TB_window").css("left", leftPosition + "px");
-    }
-        
-    function cerrarPopup() {
-        $("#TB_overlay").hide();
-        $("#TB_window").hide();
-    }
 });
