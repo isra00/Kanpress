@@ -42,6 +42,7 @@ function array_atributo_valor($salidaBD) {
  *                                  array('hombre' => 'Hombre', 'mujer'=>'Mujer');
  * @param mixed     $seleccionada   Opción seleccionada por defecto
  * @param array     $atributos      Atributos para el elemento <select>
+ * @param array     $primera_opcion Array con el valor y la etiqueta de la primera opción
  * @return string   El HTML final
  */
 function form_select($nombre, $opciones, $seleccionada=null, $atributos=null, $primera_opcion=array('0'=>'Todos')) {
