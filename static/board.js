@@ -49,8 +49,7 @@ jQuery(function() {
         $("#ventana-contenido").html($("#detalles-" + idTarea).html());
         
         //Muestra el overlay y el pop-up
-        $("#TB_overlay").show();
-        $("#TB_window").show();
+        abrirPopup();
             
         //Enlace "cerrar sin guardar"
         $(".cerrar-popup").click(function() {
@@ -143,8 +142,7 @@ jQuery(function() {
         $("#ventana-contenido").html($("#asignar-tarea").html());
 
         //Muestra el overlay y el pop-up
-        $("#TB_overlay").show();
-        $("#TB_window").show();
+        abrirPopup();
         $("#user").focus();
 
         //Pass the task ID to the form
@@ -196,8 +194,7 @@ jQuery(function() {
         $("#ventana-contenido").html($("#form-nueva").html());
         
         //Muestra el overlay y el pop-up
-        $("#TB_overlay").show();
-        $("#TB_window").show();
+        abrirPopup();
         $("#resumen").focus();
     }
     
@@ -254,6 +251,14 @@ jQuery(function() {
     
     //Lanzar al inicio, of course
     contarTareas();    
+        
+    function abrirPopup() {
+        $("#TB_overlay").show();
+        $("#TB_window").show();
+        //Por algún motivo que desconozco, el left empieza a contar en #wpbody, no en el principio de la pantalla
+        leftPosition = (screen.width / 2) - ($("#TB_window").width() / 2) - $("#wpbody").position().left;
+        $("#TB_window").css("left", leftPosition + "px");
+    }
         
     function cerrarPopup() {
         $("#TB_overlay").hide();
