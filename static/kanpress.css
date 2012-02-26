@@ -207,6 +207,17 @@
 #asignar-tarea { 
     display: none; 
 }
+#TB_window {
+    width: 670px; 
+    /*height: auto; 
+    margin-left: -335px; 
+    margin-top: 0px; */
+    position: absolute;
+    top: 100px;
+    visibility: visible;
+    margin: 0;
+    left: 0;
+}
 #TB_ajaxWindowTitle {
     font-weight: bold;
 }
