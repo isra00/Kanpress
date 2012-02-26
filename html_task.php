@@ -27,6 +27,7 @@ function kanpress_html_task($task) {
             <?php $prioridades = array("baja", "normal", "alta") ?>
             <h4 class="<?php echo $priorities[$task['priority']] ?>" title="Prioridad <?php echo $prioridades[$task['priority']] ?>">
                 <?php echo $task['summary'] ?>
+                <span>#<?php echo $task['task_id'] ?></span>
             </h4>
             
             <p>
