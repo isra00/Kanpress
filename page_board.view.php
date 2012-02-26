@@ -5,7 +5,7 @@ var KANPRESS = '<?php echo plugins_url() ?>/kanpress';
 jQuery(function() {
     <?php //Si el formulario no valida, mostramos el pop-up al inicio ?>
     <?php if (!empty($validacion)) : ?>
-    mostrarPopupNuevoArticulo();
+    mostrarPopupNuevoArticulo(true);
     <?php endif ?>
 });
 </script>
@@ -69,7 +69,7 @@ jQuery(function() {
                 <tr>
                     <th><label for="descripcion">Descripción:</label></th>
                     <td>
-                        <textarea id="descripcion" name="descripcion" type="text" class="regular-text" cols="25" rows="5"><?php stripslashes(htmlentities(post('descripcion', true))) ?></textarea>
+                        <textarea id="descripcion" name="descripcion" type="text" class="regular-text" cols="25" rows="5"><?php echo stripslashes(htmlentities(post('descripcion', true))) ?></textarea>
                         <span class="description"></span>
                     </td>
                 </tr>

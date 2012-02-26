@@ -43,14 +43,33 @@ function contarTareas() {
 }
 
 
-function mostrarPopupNuevoArticulo() {
-
+/**
+ * Mostrar el pop-up con el formulario de nueva tarea
+ *
+ * Si el argumento noVaciarFormulario es true, se mantiene y no se vacía. Si es
+ * cualquier otro valor, o no se pasa, se vaciará el formulario.
+ */
+function mostrarPopupNuevoArticulo(noVaciarFormulario) {
+    
     //Título del pop-up
     $("#TB_ajaxWindowTitle").html("Proponer nuevo artículo");
+    
+    //Contenido del pop-up
     $("#ventana-contenido").html($("#form-nueva").html());
 
     //Muestra el overlay y el pop-up
     abrirPopup();
+    
+    //Vacía el formulario por si había sido enviado y no había validado
+    if (!(noVaciarFormulario == true)) {
+    
+        $(".val").hide();
+        $("#resumen").val("");
+        $("#descripcion").val("");
+        
+        /** @todo Resetear valores de los <select> */
+    }
+    
     $("#resumen").focus();
 }
 
