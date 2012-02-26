@@ -46,16 +46,22 @@ jQuery(function() {
 <!-- Capas inicialmente ocultas -->
 
 <div id="TB_overlay" class="TB_overlayBG"></div>
-<div id="TB_window" style="width: 670px; height: auto; margin-left: -335px; top: 100px; margin-top: 0px; visibility: visible; "><div id="TB_title"><div id="TB_ajaxWindowTitle"></div><div id="TB_closeAjaxWindow"><a href="#" id="TB_closeWindowButton" title="Cerrar"><img src="http://localhost/wordpress/wp-includes/js/thickbox/tb-close.png"></a></div></div><div id="ventana-contenido"></div></div>
+<div id="TB_window">
+    <div id="TB_title">
+        <div id="TB_ajaxWindowTitle"></div>
+        <div id="TB_closeAjaxWindow"><a href="#" id="TB_closeWindowButton" title="Cerrar"><img src="http://localhost/wordpress/wp-includes/js/thickbox/tb-close.png"></a></div>
+    </div>
+    <div id="ventana-contenido"></div>
+</div>
 
 <div id="form-nueva">
     <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>" class="kanpress-form">
         <table class="form-table">
             <tbody>
                 <tr class="<?php invalido('resumen', $validacion) ?>">
-	                <th><label for="resumen">Resumen:</label></th>
-	                <td>
-	                    <input id="resumen" name="resumen" type="text" class="regular-text" value="<?php echo stripslashes(htmlentities(post('resumen', true))) ?>" />
+                    <th><label for="resumen">Resumen:</label></th>
+                    <td>
+                        <input id="resumen" name="resumen" type="text" class="regular-text" value="<?php echo stripslashes(htmlentities(post('resumen', true))) ?>" />
                         <span class="description"></span>
                         <div class="val"><?php if (isset($validacion['resumen'])) echo $validacion['resumen'] ?>
                     </td>
