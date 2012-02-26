@@ -70,7 +70,7 @@ function kanpress_create_db_schema() {
             post_id bigint(20) unsigned DEFAULT NULL,
             priority tinyint(4) unsigned NOT NULL,
             status tinyint(4) unsigned NOT NULL COMMENT '0=propuesta, 1=asignada, 2=pendiente, 3=terminada',
-            summary varchar(256) COLLATE utf8_spanish_ci NOT NULL,
+            summary varchar(255) COLLATE utf8_spanish_ci NOT NULL,
             description text COLLATE utf8_spanish_ci NOT NULL,
             time_proposed timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
             time_assigned timestamp NULL DEFAULT '0000-00-00 00:00:00',
