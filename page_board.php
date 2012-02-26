@@ -118,7 +118,7 @@ $categorias = $wpdb->get_results("SELECT wp_terms.term_id, wp_terms.name "
 //Prepare array for <select>
 $categorias = array_atributo_valor($categorias);
 
-//Get al the users
+//Get all the users
 $users = array();
 $usuarios_original = get_users();
 foreach ($usuarios_original as $u) {
