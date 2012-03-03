@@ -55,7 +55,9 @@ function mostrarPopupNuevoArticulo(noVaciarFormulario) {
     $("#TB_ajaxWindowTitle").html("Proponer nuevo artículo");
     
     //Contenido del pop-up
-    $("#ventana-contenido").html($("#form-nueva").html());
+    $("#form-nueva").appendTo($("#ventana-contenido")).show();
+    //$("#ventana-contenido").html($("#form-nueva").show().html());
+    $(".form-nueva").show(); //Se oculta en otro momento...
 
     //Muestra el overlay y el pop-up
     abrirPopup();
@@ -82,7 +84,7 @@ function abrirPopup() {
      * Por algún motivo que desconozco, el left empieza a contar en #wpbody, no 
      * en el principio de la pantalla
      */
-    leftPosition = (screen.width / 2) - ($("#TB_window").width() / 2) - $("#wpbody").position().left;
+    leftPosition = (screen.width / 2) - ($("#TB_window").width() / 2);
     $("#TB_window").css("left", leftPosition + "px");
     
     $("#TB_overlay").show();
@@ -96,6 +98,8 @@ function abrirPopup() {
 function cerrarPopup() {
     $("#TB_overlay").hide();
     $("#TB_window").hide();
+    $("#ventana-contenido > *").hide();
+    $(".form-nueva").hide(); //Ñapa total
 }
 
 
@@ -159,6 +163,7 @@ $(function() {
          * estuvieran dentro
          */
         $("#ventana-contenido .tarea-detalles").hide();
+        $("#ventana-contenido .form-nueva").hide();
         $("#detalles-" + idTarea).appendTo($("#ventana-contenido")).show();
         
         //Muestra el overlay y el pop-up
@@ -246,6 +251,7 @@ $(function() {
         //Título del pop-up
         $("#TB_ajaxWindowTitle").html("Asignar tarea");
         $("#ventana-contenido").html($("#asignar-tarea").html());
+        $(".asignar-tarea").show();
 
         //Muestra el overlay y el pop-up
         abrirPopup();

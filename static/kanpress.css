@@ -217,7 +217,7 @@
     /*height: auto; 
     margin-left: -335px; 
     margin-top: 0px; */
-    position: absolute;
+    position: fixed;
     top: 100px;
     visibility: visible;
     margin: 0;
@@ -229,6 +229,7 @@
 
 #ventana-contenido {
     margin: 20px;
+    background: white;
 }
 
 .asignacion {

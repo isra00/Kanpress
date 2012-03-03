@@ -46,16 +46,16 @@ jQuery(function() {
 <!-- Capas inicialmente ocultas -->
 
 <div id="TB_overlay" class="TB_overlayBG"></div>
-<div id="TB_window">
+<div id="TB_window" style="background: white">
     <div id="TB_title">
         <div id="TB_ajaxWindowTitle"></div>
-        <div id="TB_closeAjaxWindow"><a href="#" id="TB_closeWindowButton" title="Cerrar"><img src="http://localhost/wordpress/wp-includes/js/thickbox/tb-close.png"></a></div>
+        <div id="TB_closeAjaxWindow"><a href="#" id="TB_closeWindowButton" title="Cerrar"><img src="<?php bloginfo('wpurl') ?>/wp-includes/js/thickbox/tb-close.png"></a></div>
     </div>
     <div id="ventana-contenido"></div>
 </div>
 
 <div id="form-nueva">
-    <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>" class="kanpress-form">
+    <form method="post" action="<?php echo $_SERVER['REQUEST_URI'] ?>" class="kanpress-form form-nueva">
         <table class="form-table">
             <tbody>
                 <tr class="<?php invalido('resumen', $validacion) ?>">
@@ -98,7 +98,7 @@ jQuery(function() {
 </div>
 
 <div id="asignar-tarea">
-    <form method="post" action="<?php echo KANPRESS ?>'/ajax_assign_task.php" class="kanpress-form">
+    <form method="post" action="<?php echo KANPRESS ?>'/ajax_assign_task.php" class="kanpress-form asignar-tarea">
         <input type="hidden" name="taskId" id="taskId" />
         
         <table class="form-table">
