@@ -47,7 +47,7 @@ jQuery(function() {
 
 <div id="TB_overlay" class="TB_overlayBG"></div>
 <div id="TB_window" style="background: white">
-    <div id="TB_title">
+    <div id="TB_title" style="overflow: hidden">
         <div id="TB_ajaxWindowTitle"></div>
         <div id="TB_closeAjaxWindow"><a href="#" id="TB_closeWindowButton" title="Cerrar"><img src="<?php bloginfo('wpurl') ?>/wp-includes/js/thickbox/tb-close.png"></a></div>
     </div>
