@@ -2,14 +2,16 @@
 Contributors: isra00
 Tags: kanban, task manager
 Requires at least: 2.0.2
-Tested up to: 2.1
-Stable tag: trunk
+Tested up to: 3.3.1
+Stable tag: 0.1
 
 A kanban board for managing the creation of wordpress posts
 
 == Description ==
 
+More info on [Kanpress homepage](http://www.israelviana.es/kanpress).
 
+Más información en [la web de Kanpress en español](http://www.israelviana.es/kanpress_es)
 
 == Installation ==
 
