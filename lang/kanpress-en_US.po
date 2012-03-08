@@ -96,7 +96,7 @@ msgstr "New task"
 
 #: ../page_board.view.php:19
 msgid "Artículos planteados"
-msgstr ""
+msgstr "Proposed"
 
 #: ../page_board.view.php:27
 msgid "En desarollo"
