@@ -107,7 +107,7 @@ jQuery(function() {
                     <th><label for="categoria" style="width: auto"><?php _e('Asignar a:', 'kanpress') ?>:</label></th>
                     <td>
                         <?php echo form_select('user', $users, null, null, null) ?>
-                        <span class="description"><?php _e('Se enviará una notificación', 'kanpress') ?></span>
+                        <span class="description"></span>
                     </td>
                 </tr>
             </tbody>

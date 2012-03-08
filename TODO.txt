@@ -1,13 +1,8 @@
--Usar el prefijo de la BD
--Error/repensar: cuando se mueve una tarea a la columna 2 y no se asigna (cerrando el pop-up), no se actualiza por AJAX el nuevo estado
--Esquema de BD: revisar tipos de los campos relacionales (longitud...)
--Esquema de BD: revisar convenio de nombres, etc.
--Notificar por email cuando se asigna una tarea (wp_mail())
--Verificar requisitos del sistema a la instalación (librerías, etc)
--Añadir capabilities de kanpress
--Crear nuevas actions para que otros plugins (y este mismo) pueda asociar triggers a eventos de kanpress
--Investigar cómo minimizar CSS+JS (build?)
--Popup detalles: poner el título fuera de la tarea fuera del título del pop-up, y ponerle el icono de prioridad, y que se pueda cambiar con un click.
 -Diseño: pegarle un repaso al pie del popup de detalles
--Si no se encuentra la tabla kanpress_task intentar solucionar e informar elegantemente al usuario
 -Manejo de errores!!!!
+-PENSAR: Mostrar tareas por orden de prioridad... ¿o por fecha, como está ahora?
+-FEATURE: Si no se encuentra la tabla kanpress_task intentar solucionar e informar elegantemente al usuario
+
+LEYENDA
++La tarea está en GitHub issues
+-No está en GitHub

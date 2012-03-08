@@ -145,7 +145,7 @@ function hace_tiempo($fecha_unix) {
     $segundos = $ahora - $fecha_unix;
     
     if ($segundos < 60) {
-        return 'Hace ' . $segundos . ' segundos';
+        return sprintf(__('Hace % segundos', $segundos));
     }
 
     //dias es la division de n segs entre 86400 segundos que representa un dia
@@ -164,10 +164,11 @@ function hace_tiempo($fecha_unix) {
     $minutos = floor($mod_minuto / 60);
 
     if ($horas <= 0) {
-        return 'Hace ' . $minutos . ' minutos';
+        return sprintf(__('Hace % minutos', $minutos));
     } elseif ($dias <= 0) {
-        return 'Hace ' . $horas . ' horas ';
+        return sprintf(__('Hace % horas', $horas));
     } else {
+        /** @todo Internacionalizar elegantemente */
         return strftime('%e de %B', $fecha_unix);
     }
 }

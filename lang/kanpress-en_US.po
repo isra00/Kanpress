@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Kanpress 0.1\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-03-08 15:33+0100\n"
+"POT-Creation-Date: 2012-03-08 17:53+0100\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Israel Viana <isra00@gmail.com>\n"
 "Language-Team: Israel Viana <isra00@gmail.com>\n"
@@ -16,6 +16,19 @@ msgstr ""
 "X-Poedit-KeywordsList: __;_e\n"
 "X-Poedit-Basepath: /var/www/wordpress/wp-content/plugins/kanpress/lang/\n"
 "X-Poedit-SearchPath-0: ..\n"
+
+#: ../util.php:148
+#, php-format
+msgid "Hace % segundos"
+msgstr "% seconds ago"
+
+#: ../util.php:167
+msgid "Hace % minutos"
+msgstr "% minutes ago"
+
+#: ../util.php:169
+msgid "Hace % horas"
+msgstr "% hours ago"
 
 #: ../html_task.php:25
 msgid "No asignada"
@@ -49,44 +62,44 @@ msgid "Creada"
 msgstr "Created"
 
 #: ../html_task.php:72
-#: ../html_task.php:121
+#: ../html_task.php:123
 msgid "por"
 msgstr "by"
 
-#: ../html_task.php:76
+#: ../html_task.php:77
 msgid "Asignada"
 msgstr "Assigned"
 
-#: ../html_task.php:78
+#: ../html_task.php:79
 msgid "a"
 msgstr "to"
 
-#: ../html_task.php:83
+#: ../html_task.php:84
 msgid "Completada"
 msgstr "Completed"
 
-#: ../html_task.php:93
+#: ../html_task.php:94
 msgid "Artículo respectivo"
 msgstr "Respective article"
 
-#: ../html_task.php:100
+#: ../html_task.php:101
 msgid "Modificado"
 msgstr "Modified"
 
-#: ../html_task.php:104
+#: ../html_task.php:105
 msgid "Crear artículo correspondiente"
 msgstr "Create corresponding article"
 
-#: ../html_task.php:111
+#: ../html_task.php:112
 msgid "Guardar"
 msgstr "Save"
 
-#: ../html_task.php:113
-#: ../html_task.php:123
+#: ../html_task.php:114
+#: ../html_task.php:125
 msgid "Eliminar tarea"
 msgstr "Remove task"
 
-#: ../html_task.php:120
+#: ../html_task.php:122
 msgid "Publicado"
 msgstr "Published"
 
@@ -121,10 +134,6 @@ msgstr "Category"
 #: ../page_board.view.php:107
 msgid "Asignar a:"
 msgstr "Assign to:"
-
-#: ../page_board.view.php:110
-msgid "Se enviará una notificación"
-msgstr ""
 
 #: ../page_board.view.php:116
 msgid "Asignar tarea"
