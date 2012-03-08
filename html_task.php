@@ -73,6 +73,7 @@ function kanpress_html_task($task, $categories) {
                         </li>
                         <?php if (intval($task['assigned_to']) > 0) : ?>
                         <li>
+                            <?php /** @todo Poner en 1 sólo msj */ ?>
                             <?php _e('Asignada', 'kanpress') ?>
                             <span><?php echo strtolower(hace_tiempo(strtotime($task['time_assigned']))) ?></span>
                             <?php _e('a', 'kanpress') ?> <span><?php echo $task['user_assigned'] ?></span>
@@ -117,6 +118,7 @@ function kanpress_html_task($task, $categories) {
             <?php if ($task['post']->post_status == 'publish') : ?>
             <p class="post-is-publish">
                 <a href="<?php echo $task['post']->guid ?>">
+                    <?php /** @todo Poner en un sólo mensaje i18n */ ?>
                     <?php _e('Publicado', 'kanpress') ?> <?php echo strtolower(hace_tiempo(strtotime($task['post']->post_modified))) ?>
                     <?php _e('por', 'kanpress') ?> <?php echo get_userdata($task['post']->post_author)->data->display_name ?>
                 </a>
