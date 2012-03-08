@@ -25,7 +25,8 @@ define('TABLE_TASK', $wpdb->prefix . 'kanpress_task');
 /** @todo Coger el del sistema */
 /** @todo ¿Es realmente necesario establecerlo? ¿No está ya establecido? */
 date_default_timezone_set('Europe/Madrid');
-setlocale(LC_ALL, 'es_ES.utf8');
+//setlocale(LC_ALL, 'es_ES.utf8');
+
 
 /*
  * Wordpress bindings
@@ -51,6 +52,15 @@ function kanpress_create_admin_menu() {
 }
 
 add_action('admin_menu', 'kanpress_create_admin_menu');
+
+
+function kanpress_load_translation() {
+    //load_plugin_textdomain('kanpress', KANPRESS . '/lang/');
+    $plugin_path = plugin_basename( dirname( __FILE__ ) .'/lang' );
+    load_plugin_textdomain('kanpress', '', $plugin_path );
+}
+
+add_action('init', 'kanpress_load_translation');
 
 
 /**
