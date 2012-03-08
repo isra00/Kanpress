@@ -12,11 +12,11 @@ jQuery(function() {
 
 <div class="wrap">
     <div id="icono-kanpress" class="icon32"><br></div>
-    <h2>Kanpress <a href="javascript:void(0)" class="add-new-h2">Proponer nuevo artículo</a></h2>
+    <h2>Kanpress <a href="javascript:void(0)" class="add-new-h2"><?php _e('Nueva tarea', 'kanpress') ?></a></h2>
 
     <div class="kanban-contenedor tres-col">
         <div class="col" id="col1">
-            <h3>Artículos planteados <span></span></h3>
+            <h3><?php _e('Artículos planteados', 'kanpress') ?> <span></span></h3>
             <div class="area-tareas">
                 <?php foreach ($tareas_propuestas as $task) : ?>
                 <?php kanpress_html_task($task, $categorias) ?>
@@ -24,7 +24,7 @@ jQuery(function() {
             </div>
         </div>
         <div class="col" id="col2">
-            <h3>En desarrollo <span></span></h3>
+            <h3><?php _e('En desarollo', 'kanpress') ?> <span></span></h3>
             <div class="area-tareas">
                 <?php foreach ($tareas_asignadas as $task) : ?>
                 <?php kanpress_html_task($task, $categorias) ?>
@@ -32,7 +32,7 @@ jQuery(function() {
             </div>
         </div>
         <div class="col" id="col3">
-            <h3>Pendiente de revisión <span></span></h3>
+            <h3><?php _e('Pendiente de revisión', 'kanpress') ?> <span></span></h3>
             <div class="area-tareas">
                 <?php foreach ($tareas_pendientes as $task) : ?>
                 <?php kanpress_html_task($task, $categorias) ?>
@@ -49,7 +49,7 @@ jQuery(function() {
 <div id="TB_window" style="background: white">
     <div id="TB_title" style="overflow: hidden">
         <div id="TB_ajaxWindowTitle"></div>
-        <div id="TB_closeAjaxWindow"><a href="#" id="TB_closeWindowButton" title="Cerrar"><img src="<?php bloginfo('wpurl') ?>/wp-includes/js/thickbox/tb-close.png"></a></div>
+        <div id="TB_closeAjaxWindow"><a href="#" id="TB_closeWindowButton" title="<?php _e('Cerrar', 'kanpress') ?>"><img src="<?php bloginfo('wpurl') ?>/wp-includes/js/thickbox/tb-close.png"></a></div>
     </div>
     <div id="ventana-contenido"></div>
 </div>
@@ -59,7 +59,7 @@ jQuery(function() {
         <table class="form-table">
             <tbody>
                 <tr class="<?php invalido('resumen', $validacion) ?>">
-                    <th><label for="resumen">Resumen:</label></th>
+                    <th><label for="resumen"><?php _e('Resumen', 'kanpress') ?>:</label></th>
                     <td>
                         <input id="resumen" name="resumen" type="text" class="regular-text" value="<?php echo stripslashes(htmlentities(post('resumen', true))) ?>" />
                         <span class="description"></span>
@@ -67,21 +67,21 @@ jQuery(function() {
                     </td>
                 </tr>
                 <tr>
-                    <th><label for="descripcion">Descripción:</label></th>
+                    <th><label for="descripcion"><?php _e('Descripción', 'kanpress') ?>:</label></th>
                     <td>
                         <textarea id="descripcion" name="descripcion" type="text" class="regular-text" cols="25" rows="5"><?php echo stripslashes(htmlentities(post('descripcion', true))) ?></textarea>
                         <span class="description"></span>
                     </td>
                 </tr>
                 <tr>
-                    <th><label for="categoria">Sección:</label></th>
+                    <th><label for="categoria"><?php _e('Sección', 'kanpress') ?>:</label></th>
                     <td>
                         <?php echo form_select('categoria', $categorias, post('categoria', true), null, null) ?>
                         <span class="description"></span>
                     </td>
                 </tr>
                 <tr>
-                    <th><label for="prioridad">Prioridad:</label></th>
+                    <th><label for="prioridad"><?php _e('Prioridad', 'kanpress') ?>:</label></th>
                     <?php $prioridad = 1; //Por defecto ?>
                     <?php if (post('prioridad', true)) $prioridad = post('prioridad', true); ?>
                     <td><?php echo form_select('prioridad', array('Baja', 'Normal', 'Alta'), $prioridad, null, null) ?>
@@ -104,16 +104,16 @@ jQuery(function() {
         <table class="form-table">
             <tbody>
                 <tr>
-                    <th><label for="categoria" style="width: auto">Asignar a:</label></th>
+                    <th><label for="categoria" style="width: auto"><?php _e('Asignar a:', 'kanpress') ?>:</label></th>
                     <td>
                         <?php echo form_select('user', $users, null, null, null) ?>
-                        <span class="description">Se enviará una notificación</span>
+                        <span class="description"><?php _e('Se enviará una notificación', 'kanpress') ?></span>
                     </td>
                 </tr>
             </tbody>
         </table>
         <p class="submit">
-            <button type="button" name="assign" class="button-primary margen-arriba" id="btn-asignar">Asignar tarea</button>
+            <button type="button" name="assign" class="button-primary margen-arriba" id="btn-asignar"><?php _e('Asignar tarea', 'kanpress') ?></button>
         </p>
     </form>
 </div>
