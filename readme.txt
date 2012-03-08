@@ -3,7 +3,7 @@ Contributors: isra00
 Tags: kanban, task manager
 Requires at least: 2.0.2
 Tested up to: 3.3.1
-Stable tag: 0.1
+Stable tag: 0.2
 
 A kanban board for managing the creation of wordpress posts
 
@@ -24,6 +24,10 @@ Más información en [la web de Kanpress en español](http://www.israelviana.es/
 = Is the Kanban board public? =
 
 No, it's only available for registered users with role contributor or higher
+
+= Which languages are available in Kanpress? =
+
+Currently, it's in English (American) and Spanish. If you want to translate it into any other language, you are very welcome ;-) Just contact me in isra00@gmail.com
 
 == Screenshots ==
 
