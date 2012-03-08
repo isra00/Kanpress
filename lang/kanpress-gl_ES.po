@@ -1,0 +1,132 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Kanpress 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-03-08 15:33+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Israel Viana <isra00@gmail.com>\n"
+"Language-Team: Israel Viana <isra00@gmail.com>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: Spanish\n"
+"X-Poedit-Country: SPAIN\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e\n"
+"X-Poedit-Basepath: /var/www/wordpress/wp-content/plugins/kanpress/lang/\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../html_task.php:25
+msgid "No asignada"
+msgstr "Non asignada"
+
+#: ../html_task.php:30
+#: ../html_task.php:58
+#: ../page_board.view.php:84
+msgid "Prioridad"
+msgstr "Prioridade"
+
+#: ../html_task.php:43
+msgid "La tarea todavía no ha sido asignada a nadie"
+msgstr "A tarefa aínda non foi asignada a ninguén"
+
+#: ../html_task.php:46
+msgid "Asignada a"
+msgstr "Asignada a"
+
+#: ../html_task.php:54
+msgid "Categoría"
+msgstr "Categoría"
+
+#: ../html_task.php:64
+#: ../page_board.view.php:70
+msgid "Descripción"
+msgstr "Descrición"
+
+#: ../html_task.php:70
+msgid "Creada"
+msgstr "Creada"
+
+#: ../html_task.php:72
+#: ../html_task.php:121
+msgid "por"
+msgstr "por"
+
+#: ../html_task.php:76
+msgid "Asignada"
+msgstr "Asignada"
+
+#: ../html_task.php:78
+msgid "a"
+msgstr "a"
+
+#: ../html_task.php:83
+msgid "Completada"
+msgstr "Completada"
+
+#: ../html_task.php:93
+msgid "Artículo respectivo"
+msgstr "Artigo respectivo"
+
+#: ../html_task.php:100
+msgid "Modificado"
+msgstr "Modificado"
+
+#: ../html_task.php:104
+msgid "Crear artículo correspondiente"
+msgstr "Crear artigo correspondente"
+
+#: ../html_task.php:111
+msgid "Guardar"
+msgstr "Gardar"
+
+#: ../html_task.php:113
+#: ../html_task.php:123
+msgid "Eliminar tarea"
+msgstr "Eliminar tarefa"
+
+#: ../html_task.php:120
+msgid "Publicado"
+msgstr "Publicado"
+
+#: ../page_board.view.php:15
+msgid "Nueva tarea"
+msgstr "Nova tarefa"
+
+#: ../page_board.view.php:19
+msgid "Artículos planteados"
+msgstr "Artigos plantexados"
+
+#: ../page_board.view.php:27
+msgid "En desarollo"
+msgstr "En progreso"
+
+#: ../page_board.view.php:35
+msgid "Pendiente de revisión"
+msgstr "Pendente de revisión"
+
+#: ../page_board.view.php:52
+msgid "Cerrar"
+msgstr "Pechar"
+
+#: ../page_board.view.php:62
+msgid "Resumen"
+msgstr "Resumo"
+
+#: ../page_board.view.php:77
+msgid "Sección"
+msgstr "Seción"
+
+#: ../page_board.view.php:107
+msgid "Asignar a:"
+msgstr "Asignar a:"
+
+#: ../page_board.view.php:110
+msgid "Se enviará una notificación"
+msgstr "Enviarase unha notificación"
+
+#: ../page_board.view.php:116
+msgid "Asignar tarea"
+msgstr "Asignar tarefa"
+
