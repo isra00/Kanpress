@@ -13,19 +13,15 @@ A kanban board for managing the creation of wordpress posts
 *Kanpress brings Kanban management methodology to the publishing world, providing enhanced management of magazines, newspapers and blogs with a workflow where posts pass through different states.*
 
 **Total integration**
-
 Kanpress manages post creation in your site with your current users and categories.
 
 **Responsive design**
-
 Kanpress design is flexible and adapted to any PC browser, tablet o smartphone.
 
 **Traceability**
-
 Easily visualize who and when a task was assigned, processed or closed.
 
 **Private**
-
 Kanpress is used from Wordpress desktop and it doesn't change nothing about aspect or functionallity of your site.
 
 **More info on [Kanpress homepage](http://www.israelviana.es/kanpress).**
@@ -37,20 +33,15 @@ Kanpress is used from Wordpress desktop and it doesn't change nothing about aspe
 
 
 **Integración total**
-
 Kanpress maneja la creación de posts en el sitio Wordpress, con los propios usuarios y categorías (taxonomía) del sitio.
 
-
 **Responsive design**
-
 El diseño de Kanpress es flexible y se adapta a cualquier navegador de PC, tablet o móvil.
 
 **Trazabilidad**
-
 Visualiza fácilmente quién y cuándo asignó, procesó o cerró cada tarea.
 
 **Privado**
-
 Kanpress se usa desde el Escritorio de Wordpress, y no modifica el aspecto o la funcionalidad externa de tu sitio web.
 
 **Más información en [la web de Kanpress en español](http://www.israelviana.es/kanpress_es)**
