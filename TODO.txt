@@ -1,8 +1,0 @@
--Diseño: pegarle un repaso al pie del popup de detalles
--Manejo de errores!!!!
--PENSAR: Mostrar tareas por orden de prioridad... ¿o por fecha, como está ahora?
--FEATURE: Si no se encuentra la tabla kanpress_task intentar solucionar e informar elegantemente al usuario
-
-LEYENDA
-+La tarea está en GitHub issues
--No está en GitHub
